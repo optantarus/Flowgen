@@ -11,5 +11,5 @@ __pycache__
 doc/html
 
 # ignore generated example file
-emxample/flowdoc
+example/flowdoc
 example/*.out
