@@ -13,6 +13,9 @@ FLOWDBS_FROMCCSOURCEFILES := $(shell ls src/*.cpp | sed s/"src\/"/"flowdoc\/aux_
 FLOWHTML:= $(FLOWHTML_FROMCCSOURCEFILES:.cpp=.html) flowdoc/simple_demo_src.html
 FLOWDBS:= $(FLOWDBS_FROMCCSOURCEFILES:.cpp=.flowdb) flowdoc/aux_files/simple_demo_src.flowdb
 
+LD_LIBRARY_PATH=/usr/lib/llvm-8/lib/
+export LD_LIBRARY_PATH
+
 #$(TMPDIR)/%.txt : src/%.cpp
 #	@echo "cc-to-txt: processing $^ to make $@"
 #	@echo execute src-to-txt-converter
