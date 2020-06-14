@@ -1,4 +1,12 @@
 #!/usr/bin/env python
+
+"""Build database tool.
+
+@file build_db.py
+
+This tool takes sourcefiles as input and create a *.flowdb file.
+"""
+
 import re
 import sys
 import clang.cindex
@@ -32,53 +40,24 @@ def get_referenced(self):
 clang.cindex.Cursor.get_referenced = get_referenced
 
 
-#looks for an action comment inside the extent of a given node (write_zoomlevel <= diagram_zoom)
-def lookfor_ActionComment_in_node(nodeIN,diagram_zoom):
     
-    def regexActionComment(zoom):
-       if zoom==0:
-          zoom=''  
-       regextextActionComment_zoom=r'^\s*//\$'+str(zoom)+r'(?!\s+\[)\s+(?P<action>.+)$'
-       return re.compile(regextextActionComment_zoom)       
-
-    infile_str=nodeIN.location.file.name.decode("utf-8")
-    infile= open(infile_str,'r')            
-    start_line=nodeIN.extent.start.line
-    end_line=nodeIN.extent.end.line
-    enum_file=list(enumerate(infile,start=1))      
-    infile.close()
-    
-    #loop over zoom levels, first the lowest
-    for it_zoom in range(0,diagram_zoom+1):
-       #loop over source code lines
-       for i, line in enum_file:
-          if i in range(start_line,end_line):
-             if regexActionComment(it_zoom).match(line):
-                 lookfor_ActionComment_in_node.write_zoomlevel=it_zoom
-                 return True   
-    lookfor_ActionComment_in_node.write_zoomlevel=None
-    return False
-    
-#looks for an annotated action comment inside the extent of a given node (zoom level modifies the type of action comment)
 def lookfor_actionAnnotation_inNode(nodeIN,zoom):
+    """Looks for an annotated action comment inside the extent of a given node (zoom level modifies the type of action comment).
+    """
 
     if zoom==0:
       zoom=''  
     regextextActionComment=r'^\s*//\$'+str(zoom)+r'(?!\s+\[)\s+(?P<action>.+)$'
     regexToUse=re.compile(regextextActionComment)
     
-    ##action level 0
-    #regextextActionComment=    r'^\s*//\$(?!\s+\[)\s+(?P<action>.+)$'
-    ##action level 1
-    #regextextActionComment1=   r'^\s*//\$1(?!\s+\[)\s+(?P<action>.+)$'
-    ##action level 0 and 1
-    ##regextextAnyActionComment1=r'^\s*//\$1?(?!\s+\[)\s+(?P<action>.+)$'
-
-          
-    infile_str=nodeIN.location.file.name.decode("utf-8")
-    infile= open(infile_str,'r')            
+    # get start and end line of node extend
     start_line=nodeIN.extent.start.line
     end_line=nodeIN.extent.end.line
+    
+    # save all file line in variable
+    # TODO: why dump complete file and not from start to end line ?      
+    infile_str=nodeIN.location.file.name.decode("utf-8")
+    infile= open(infile_str,'r')            
     enum_file=list(enumerate(infile,start=1))      
     infile.close()
    
@@ -92,13 +71,18 @@ def lookfor_actionAnnotation_inNode(nodeIN,zoom):
 
 
 def find_functions(node):
+  """Search in node and its children for functions or methods.
+  
+  The function calls itself for every child node.
+  Each found function is checked for annotated action comments.
+  """
   
   global writefunc, relevant_folder
   if node.kind.is_declaration():
      #8 is a function and 21 is c++ class method
     if node.kind.value== 8 or node.kind.value==21:
        if os.path.dirname(node.location.file.name.decode("utf8")) == relevant_folder:
-         #print(node.location.file.name.decode("utf8"))         
+                
          if lookfor_actionAnnotation_inNode(node,0):
             zoom_str='0'
             if lookfor_actionAnnotation_inNode(node,1):
@@ -114,26 +98,35 @@ def find_functions(node):
 
   # Recurse for children of this node
   for c in node.get_children():
-      #print ('children', c.kind)
       find_functions(c)
 
-#### main program
 
-index = clang.cindex.Index.create()
-args=["-Wall","-ansi"]
-if len(sys.argv)>=2:
-   args+=sys.argv[2:]
-tu = index.parse(sys.argv[1],args)
-print ('Translation unit:', tu.spelling.decode("utf-8"))
-relevant_folder=os.path.dirname(tu.spelling.decode("utf-8"))
-for diagnostic in tu.diagnostics:
-  print(diagnostic)
-infile_str=os.path.splitext(os.path.basename(sys.argv[1]))[0]
-#print (infile_str)
-if not os.path.exists('flowdoc/aux_files/'):
-   print('CREATING FOLDER flowdoc/aux_files/')
-   os.makedirs('flowdoc/aux_files/')
-writefunc = open('flowdoc/aux_files/'+infile_str+'.flowdb',"w")
-find_functions(tu.cursor)
-writefunc.close()
+
+if __name__ == '__main__':
+    """ main program
+    """
+
+    index = clang.cindex.Index.create()
+    
+    # comand line arguments
+    args=["-Wall","-ansi"]
+    if len(sys.argv)>=2:
+       args+=sys.argv[2:]
+    
+    # parse file given by comand line with specified arguments   
+    tu = index.parse(sys.argv[1],args)
+    print ('Translation unit:', tu.spelling.decode("utf-8"))
+    
+    relevant_folder=os.path.dirname(tu.spelling.decode("utf-8"))
+    for diagnostic in tu.diagnostics:
+      print(diagnostic)
+    infile_str=os.path.splitext(os.path.basename(sys.argv[1]))[0]
+    
+    if not os.path.exists('flowdoc/aux_files/'):
+       print('CREATING FOLDER flowdoc/aux_files/')
+       os.makedirs('flowdoc/aux_files/')
+       
+    writefunc = open('flowdoc/aux_files/'+infile_str+'.flowdb',"w")
+    find_functions(tu.cursor)
+    writefunc.close()
 
