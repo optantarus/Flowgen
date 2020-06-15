@@ -401,11 +401,44 @@ def find_loopstmt(nodeIN):
     return loopbeginlineArrayIN, loopendlineArrayIN, loopnodeArrayIN, looptypeArrayIN
 
 
-
+## Simplified control flow of the function:
+# @startuml
+# start
+# while (from zoom level 0 to max)
+#  :Search top level if statements;
+#  :Search loop statements;
+#  while (from source code line 0 to last)
+#  :Search action annotations;
+#  :Search function call annotations;
+#  
+#  :Create plantuml start string;
+#  
+#  if (if statement found ?) then (yes)
+#    :Create plantuml strings;
+#    :Search else, elseif and nested if statements;
+#  else (no)
+#  endif
+#  
+#  if (loop statement found ?) then (yes)
+#    :Create plantuml strings;
+#  else (no)
+#  endif
+#  
+#  if (return statement found ?) then (yes)
+#    :Create plantuml strings;
+#  else (no)
+#  endif
+#  endwhile
+# :Creat level 0 action annotation strings;
+# :Create plantuml end string;
+# :Store created plantuml in *.txt file;
+# endwhile
+# stop
+# @enduml
 def process_find_functions(node, MAX_diagram_zoomlevel):
     """Main process function.
     
-    The maximum zoom level is already known
+    The maximum zoom level is already known.
     
     @param[in]  node                    Node to process.
     @param[in]  MAX_diagram_zoomlevel   Max zoom level.
