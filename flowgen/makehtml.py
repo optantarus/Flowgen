@@ -1,6 +1,13 @@
 #!/usr/bin/env python
-#### writes out HTML files. Uses .flowdbs information and .cmapx information (for hyperlinks).
-#### HMTL files point to PNG files with the diagrams
+
+"""Generate html tool.
+
+Writes out HTML files. Uses .flowdbs information and .cmapx information (for hyperlinks).
+HMTL files point to PNG files with the diagrams.
+
+@file makehtml.py
+
+"""
 
 import sys
 import os
