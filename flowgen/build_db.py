@@ -70,14 +70,13 @@ def lookfor_actionAnnotation_inNode(nodeIN,zoom):
 
 
 
-def find_functions(node):
+def find_functions(node, writefunc, relevant_folder):
   """Search in node and its children for functions or methods.
   
   The function calls itself for every child node.
   Each found function is checked for annotated action comments.
   """
   
-  global writefunc, relevant_folder
   if node.kind.is_declaration():
      #8 is a function and 21 is c++ class method
     if node.kind.value== 8 or node.kind.value==21:
@@ -98,7 +97,7 @@ def find_functions(node):
 
   # Recurse for children of this node
   for c in node.get_children():
-      find_functions(c)
+      find_functions(c, writefunc, relevant_folder)
 
 
 
@@ -127,6 +126,6 @@ if __name__ == '__main__':
        os.makedirs('flowdoc/aux_files/')
        
     writefunc = open('flowdoc/aux_files/'+infile_str+'.flowdb',"w")
-    find_functions(tu.cursor)
+    find_functions(tu.cursor, writefunc, relevant_folder)
     writefunc.close()
 
