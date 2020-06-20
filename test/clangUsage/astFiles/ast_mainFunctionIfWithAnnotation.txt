@@ -1,0 +1,12 @@
+Source folder: testFiles
+Description source file: Test if with annotation
+AST infos: kind.name (kind.value), node.spelling, node.displayname,node.get_usr(), kind.is_declaration() -- extent.start.line, extent.end.line -- get_tokens 
+AST symbols:  "#": node does not have this information 
+
+AST:
+TRANSLATION_UNIT (300),  None,  b'testFiles/test_mainFunctionIfWithAnnotation.cpp',  b'', False -- 1, 11 -- // generated plantuml contains if structure with no condition// TODO: Check if if without annotation should be shown (for loops there is different behavior, they are not shown)intmain(){if(x==1){//$ action 1}}
+  FUNCTION_DECL (8),  b'main',  b'main()',  b'c:@F@main#', True -- 4, 10 -- intmain(){if(x==1){//$ action 1}}
+    COMPOUND_STMT (202),  None,  b'',  b'', False -- 5, 10 -- {if(x==1){//$ action 1}}
+      IF_STMT (205),  None,  b'',  b'', False -- 6, 9 -- if(x==1){//$ action 1}
+        UNEXPOSED_EXPR (100),  None,  b'',  b'', False -- 0, 0 -- 
+        COMPOUND_STMT (202),  None,  b'',  b'', False -- 7, 9 -- {//$ action 1}
