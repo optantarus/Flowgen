@@ -51,7 +51,8 @@ class build_db_test(unittest.TestCase):
            'functionsCallWithAnnotations'              :'Test function call in main with annotations',
            'functionsCallIfElseWithCondAnnotations'    :'Test functions calls within if - else with annotations',
            'functionCallsForLoopWithCondAnnotations'   :'test function cal within for loop with annotations',
-           'mainFunctionReturnCondAnnotations'         :'Test return with conditional annotation'
+           'mainFunctionReturnCondAnnotations'         :'Test return with conditional annotation',
+           'complex1'                                  :'Test combination of different structures'
            }
 
     def setUp(self):
@@ -66,19 +67,20 @@ class build_db_test(unittest.TestCase):
         """
         
         for fileName, description in self.testFiles.items():
-            # get clang translation unit and file path
-            clangIndex = clang.cindex.Index.create()
-            clangTu = clangIndex.parse('testFiles/test_' + fileName + '.cpp',self.clangStdArgs)
-            relevant_folder=os.path.dirname(clangTu.spelling.decode("utf-8"))
+            with self.subTest(description=description):
+                # get clang translation unit and file path
+                clangIndex = clang.cindex.Index.create()
+                clangTu = clangIndex.parse('testFiles/test_' + fileName + '.cpp',self.clangStdArgs)
+                relevant_folder=os.path.dirname(clangTu.spelling.decode("utf-8"))
+                
+                # execute function under test
+                testFile = open('test_build_db/generatedFiles/test_' + fileName +'.flowdb',"w")
+                build_db.find_functions(clangTu.cursor, testFile, relevant_folder)
+                testFile.close()
+                
+                # compare generated file with reference
+                self.assertTrue(filecmp.cmp('test_build_db/generatedFiles/test_' + fileName +'.flowdb', 'test_build_db/referenceFiles/ref_' + fileName +'.flowdb', False), description + ': Generated *.flowdb file differs from reference.')
             
-            # execute function under test
-            testFile = open('test_build_db/generatedFiles/test_' + fileName +'.flowdb',"w")
-            build_db.find_functions(clangTu.cursor, testFile, relevant_folder)
-            testFile.close()
-            
-            # compare generated file with reference
-            self.assertTrue(filecmp.cmp('test_build_db/generatedFiles/test_' + fileName +'.flowdb', 'test_build_db/referenceFiles/ref_' + fileName +'.flowdb', False), description + ': Generated *.flowdb file differs from reference.')
-        
 
 
 if __name__ == "__main__":

@@ -101,7 +101,7 @@ def find_functions(node, writefunc, relevant_folder):
 
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     """ main program
     """
 
