@@ -1,0 +1,11 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+
+while (FOR (int i = 0; i < 6; i++ ))
+   :#84add6:action 1;
+endwhile
+
+
+@enduml

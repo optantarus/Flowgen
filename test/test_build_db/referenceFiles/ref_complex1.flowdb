@@ -1,0 +1,4 @@
+c:@F@main#	0	INT main()
+c:@F@init#	0	INT init()
+c:@F@maincycle#	1	INT maincycle()
+c:@F@readInputs#	1	VOID readInputs()

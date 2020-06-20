@@ -1,0 +1,10 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+partition #84add6 "action 1" {
+:#b2cce5:action 1.1;
+}
+:#84add6:action 2;
+
+@enduml

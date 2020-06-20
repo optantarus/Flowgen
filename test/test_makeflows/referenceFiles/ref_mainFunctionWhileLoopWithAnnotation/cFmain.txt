@@ -1,0 +1,9 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+while (x < b)
+:#84add6:action 1;
+endwhile
+
+@enduml
