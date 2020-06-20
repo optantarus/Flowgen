@@ -1,0 +1,12 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+
+if (x == 1) then(yes)
+   :#84add6:action 1;
+else(no)
+endif
+
+
+@enduml

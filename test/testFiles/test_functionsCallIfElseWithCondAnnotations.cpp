@@ -1,4 +1,6 @@
-// TODO: main function not in flowdb ?
+// TODO: main function not in flowdb ? Not generated in plantuml.
+
+void call_1(void);
 
 int main()
 {

@@ -1,4 +1,4 @@
-# Level 3 is not implemented
+# Level 3 is not implemented, will be ignored
 
 int main()
 {

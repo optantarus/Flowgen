@@ -1,3 +1,4 @@
+// TODO: Link for function do_calc not generated ?
 
 int main()
 {

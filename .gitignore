@@ -16,3 +16,4 @@ example/*.out
 
 # ignore generated test files
 test/test_build_db/generatedFiles
+test/test_makeflows/generatedFiles

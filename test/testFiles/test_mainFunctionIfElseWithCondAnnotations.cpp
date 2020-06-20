@@ -1,3 +1,4 @@
+// condition 3 for else is not shown
 
 int main()
 {

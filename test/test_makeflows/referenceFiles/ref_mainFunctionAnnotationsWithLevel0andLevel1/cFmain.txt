@@ -1,0 +1,8 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+:#84add6:action 1;
+:#84add6:action 2;
+
+@enduml

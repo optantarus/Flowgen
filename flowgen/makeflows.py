@@ -90,8 +90,8 @@ def lookfor_lowestZoomactionAnnotation_inNode(nodeIN, diagram_zoom):
 
 
 #looks up in the database generated at compilation time if a given key (function/method' USR) exists
-def read_flowdbs(key):
-    for file in glob.glob('flowdoc/aux_files/*.flowdb'):
+def read_flowdbs(key, input_folder):
+    for file in glob.glob(input_folder + '*.flowdb'):
         reader = csv.reader(open(file, "rt", encoding="utf8"), delimiter='\t')
         for row in reader:
             if key == row[0]:
@@ -152,21 +152,22 @@ def write_htmlonline(string, outfile_str):
     return
 
 
-def write_txt(string, outfile_str):
+def write_txt(string, outfile_str, output_folder):
     """Writes diagram separately into a plantuml .txt file.
     
     @param[in]   string        Contains the plantuml diagram.
     @param[in]   outfile_str   Name of the *.txt file.
+    @param[in]   output_folder location of all generated *.txt file
     """
     
-    f = open('flowdoc/aux_files/' + outfile_str + ".txt", "w")
+    f = open(output_folder + outfile_str + ".txt", "w")
     f.write(string)
     f.close()
     return
 
 
 
-def find_calls(scan_fileIN, scan_lineIN, scan_column_startIN, scan_column_endIN):
+def find_calls(tu, scan_fileIN, scan_lineIN, scan_column_startIN, scan_column_endIN):
     """Finds calls in a source code line that has been annotated with //$ at the end.
     
     Call nodes are only associated to the characters '(' ',' ')' of the source code line.
@@ -177,6 +178,7 @@ def find_calls(scan_fileIN, scan_lineIN, scan_column_startIN, scan_column_endIN)
     - CXXMemberCallExpr: call to a member method
     - CallExpr: call to a function
     
+    @param[in]  tu                      clang created translation unit
     @param[in]  scan_fileIN             source code file to process
     @param[in]  scan_lineIN             line in source code file to process
     @param[in]  scan_column_startIN     start colum of command line to process
@@ -435,13 +437,16 @@ def find_loopstmt(nodeIN):
 # endwhile
 # stop
 # @enduml
-def process_find_functions(node, MAX_diagram_zoomlevel):
+def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output_folder):
     """Main process function.
     
     The maximum zoom level is already known.
     
+    @param[in]  tu                      clang created translation unit
     @param[in]  node                    Node to process.
     @param[in]  MAX_diagram_zoomlevel   Max zoom level.
+    @param[in]  input_folder            location of *.flowdb files
+    @param[in]  output_folder           location of all generated files
     """
     
     # Define regular expressions
@@ -487,7 +492,6 @@ def process_find_functions(node, MAX_diagram_zoomlevel):
     end_line = node.extent.end.line
     infile_clang = node.location.file
     
-    global infile_str
     infile_str = node.location.file.name.decode("utf-8")
     infile = open(infile_str, 'r')
     #lines enumerated starting from 1
@@ -655,7 +659,7 @@ def process_find_functions(node, MAX_diagram_zoomlevel):
                             classname = ''
                             if it7.kind.name == 'CXX_METHOD':
                                 classname = str(it7.semantic_parent.spelling.decode("utf-8")) + '::'
-                            if read_flowdbs(it7.get_usr().decode("utf8")):
+                            if read_flowdbs(it7.get_usr().decode("utf8"), input_folder):
                                 call_in_filename_str = read_flowdbs.file + '.html'
                                 last_comment_str[write_zoomlevelIN] += '\n' + str(
                                     it7.result_type.kind.name) + ' ' + classname + str(it7.displayname.decode(
@@ -1049,7 +1053,7 @@ def process_find_functions(node, MAX_diagram_zoomlevel):
                         scan_file = infile_clang
                         scan_line = i
                         print('LOOKING FOR CALLS AT: ', scan_file, scan_line, scan_column_start, scan_column_end)
-                        singlelinecallsdefArray = find_calls(scan_file, scan_line, scan_column_start, scan_column_end)
+                        singlelinecallsdefArray = find_calls(tu, scan_file, scan_line, scan_column_start, scan_column_end)
                         #for it4 in singlelinecallsdefArray:
                         #print ('singlelinecallsdefArray',it4.displayname.decode("utf-8"))
                         for it5 in singlelinecallsdefArray:
@@ -1116,58 +1120,68 @@ def process_find_functions(node, MAX_diagram_zoomlevel):
         string += '\n@enduml'
 
         write_htmlonline(string, outfile_str)
-        write_txt(string, outfile_str)
+        write_txt(string, outfile_str, output_folder)
 
     return
 
 
 
-def find_functions(node):
+def find_functions(tu, node, relevant_folder, input_folder, output_folder):
     """Finds the functions to process.
     
     The function calls itself for every child node.
     
+    @param[in]  tu               clang created translation unit
+    @param[in]  node             start node for search
+    @param[in]  relevant_folder  location of file currently processed
+    @param[in]  input_folder     location of *.flowdb files
+    @param[in]  output_folder    location of all generated files
+    
     TODO: It should be updated after build_db.py and method lookfor_lowestZoomactionAnnotation_inNode(nodeIN,zoom) have been included.
     """
     
-    global relevant_folder
     if node.kind.is_declaration():
         if node.kind.name == 'CXX_METHOD' or node.kind.name == 'FUNCTION_DECL':
             if os.path.dirname(node.location.file.name.decode("utf8")) == relevant_folder:
                 #is it in database?
                 keyIN = node.get_usr().decode("utf8")
-                fileIN = 'flowdoc/aux_files/' + \
+                fileIN = input_folder + \
                          os.path.splitext(os.path.basename(node.location.file.name.decode("utf8")))[0] + '.flowdb'
+
                 if read_single_flowdb(keyIN, fileIN):
-                    process_find_functions(node, read_single_flowdb.max_diagram_zoomlevel)
+                    process_find_functions(tu, node, read_single_flowdb.max_diagram_zoomlevel, input_folder, output_folder)
                     return
 
     # Recurse for children of this node
     for c in node.get_children():
         #print ('children', c.kind)
-        find_functions(c)
+        find_functions(tu, c, relevant_folder, input_folder, output_folder)
 
 
 
-if __name__ == '__main__':
+if __name__ == '__main__': # pragma: no cover
     """ main program
     """
 
-index = clang.cindex.Index.create()
-# possible arguments to invoke index.parse:
-# "-stdlib=libc++", to use libc++
-# "-v" to et information on the include paths
-# some arguments are hard-coded...
-args = ["-c", "-x", "c++", "-Wall", "-ansi"]
-# ...others arguments are taken from the command line invocation
-if len(sys.argv) >= 2:
-    args += sys.argv[2:]
-# In 'cindex.py': def parse(self, path, args=None, unsaved_files=None, options = 0)
-tu = index.parse(sys.argv[1], args)
-print('Translation unit:', tu.spelling.decode("utf-8"))
-relevant_folder = os.path.dirname(tu.spelling.decode("utf-8"))
-for diagnostic in tu.diagnostics:
-    print(diagnostic)
-#global variable for the name of the input file. It will be defined later on.
-infile_str = ''
-find_functions(tu.cursor)
+    index = clang.cindex.Index.create()
+    # possible arguments to invoke index.parse:
+    # "-stdlib=libc++", to use libc++
+    # "-v" to et information on the include paths
+    # some arguments are hard-coded...
+    args = ["-c", "-x", "c++", "-Wall", "-ansi"]
+    # ...others arguments are taken from the command line invocation
+    if len(sys.argv) >= 2:
+        args += sys.argv[2:]
+    # In 'cindex.py': def parse(self, path, args=None, unsaved_files=None, options = 0)
+    tu = index.parse(sys.argv[1], args)
+    print('Translation unit:', tu.spelling.decode("utf-8"))
+    relevant_folder = os.path.dirname(tu.spelling.decode("utf-8"))
+    for diagnostic in tu.diagnostics:
+        print(diagnostic)
+    #global variable for the name of the input file. It will be defined later on.
+    
+    input_folder = 'flowdoc/aux_files/'
+    output_folder = input_folder
+    
+    find_functions(tu, tu.cursor, relevant_folder, input_folder, output_folder)
+    

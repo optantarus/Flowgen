@@ -1,0 +1,9 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+repeat
+:#84add6:action 1;
+repeat while (x != 1)
+
+@enduml
