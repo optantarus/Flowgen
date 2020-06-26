@@ -1,4 +1,9 @@
-// TODO: Link for function do_calc not generated ?
+/*
+* Link for function do_calc not generated ?
+*  is shown if function is declared.
+*/
+
+void do_calc(void);
 
 int main()
 {
@@ -7,7 +12,7 @@ int main()
     do_calc() //$
 }
 
-void do_calc()
+void do_calc(void)
 {
     //$ action 2
 }

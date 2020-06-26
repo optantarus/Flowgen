@@ -41,7 +41,7 @@ class makeflows_test(unittest.TestCase):
            'mainFunctionIfElseIfElseWithCondAnnotations':'Test if - elseif - else with conditional and normal annotations',
            'mainFunctionNestedIfWithCondAnnotations'   :'Test nested ifs with conditional and normal annotations',
            'mainFunctionDoWhileLoopWithAnnotation'     :'Test do while loop with annotation',
-           'mainFunctionDoWhileLoopWithCondAnnotations':'Test do while loop with conditional an normal annotations',
+           'mainFunctionDoWhileLoopWithCondAnnotations':'Test do while loop with conditional and normal annotations',
            'mainFunctionForLoopWithAnnotation'         :'Test for loop with annotation',
            'mainFunctionForLoopWithCondAnnotations'    :'Test for loop with conditonal and normal annotations',
            'mainFunctionWhileLoopWithAnnotation'       :'Test while loop with annotations',

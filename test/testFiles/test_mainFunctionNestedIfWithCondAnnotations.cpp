@@ -1,3 +1,4 @@
+int x, y;
 
 int main()
 {

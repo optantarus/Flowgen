@@ -1,5 +1,7 @@
 // condition 3 for else is not shown
 
+int x;
+
 int main()
 {
     //$ [condition 1]
