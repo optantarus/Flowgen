@@ -1,8 +1,11 @@
-// test file with complex combination of constructs
-// TODO: If in main not shown.
-// TODO: Condition of while loop not completly shown.
-// TODO: If conditions un maincycle not shown if not annotated.
-// TODO: Loop in readInputs not shown.
+/*
+* test file with complex combination of constructs
+* TODO: If in main not shown.
+* TODO: Condition of while loop not completly shown.
+* TODO: If conditions un maincycle not shown if not annotated.
+* TODO: Loop in readInputs not shown.
+* TODO: Build db does not add readCAN to flowdb -> because no level 0 annotation ? -> add warning.
+*/
 
 bool init(void);
 void maincycle(void);
@@ -32,7 +35,9 @@ init()
 
 maincycle()
 {
-    //$
+    int timer, oldTimer, error;
+
+	//$
     while (true)
     {
         //$ [time for new main cycle ieteration ?]
@@ -76,7 +81,7 @@ maincycle()
 
 void readInputs()
 {
-    init i=0;
+    int i=0;
     
     //$ Loop through all inputs.
     for(i=0; i<10; i=i+1)
@@ -89,7 +94,9 @@ void readInputs()
 
 void readCAN()
 {
-    init i=0;
+    int i=0;
+    int CrcReceived, CrcExpected, MsgCtrReceived, MsgCtrExpected;
+    bool messageReceived;
     
     //$ [Message received ?]
     if{messageReceived == true)

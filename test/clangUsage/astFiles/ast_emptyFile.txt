@@ -1,0 +1,9 @@
+Source folder: testFiles  
+Description source file: Test empty cpp file.  
+AST symbols:  "#": node does not have this information   
+  
+AST table:  
+  
+| node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
+| :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
+ |   TRANSLATION_UNIT | 300 | None | testFiles/test_emptyFile.cpp |  | False | 1 | 2 |  |  | 

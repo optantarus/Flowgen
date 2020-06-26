@@ -1,4 +1,6 @@
-// TODO: main function not reconized by build_db ?
+/**
+* TODO: main function not reconized by build_db ?
+*/
 
 int main()
 {
