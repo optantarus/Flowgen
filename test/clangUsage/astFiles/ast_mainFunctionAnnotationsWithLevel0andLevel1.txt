@@ -1,0 +1,11 @@
+Source folder: testFiles  
+Description source file: Test annotations with level 0 and 1  
+AST symbols:  "#": node does not have this information   
+  
+AST table:  
+  
+| node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
+| :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
+ |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionAnnotationsWithLevel0andLevel1.cpp |  | False | 1 | 10 |  | intmain(){//$ action 1//$1 action 1.1//$ action 2} | 
+ | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 2 | 9 |  | intmain(){//$ action 1//$1 action 1.1//$ action 2} | 
+ | ----  COMPOUND_STMT | 202 | None |  |  | False | 3 | 9 |  | {//$ action 1//$1 action 1.1//$ action 2} | 

@@ -1,0 +1,20 @@
+Source folder: testFiles  
+Description source file: Test do while loop with annotation  
+AST symbols:  "#": node does not have this information   
+  
+AST table:  
+  
+| node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
+| :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
+ |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionDoWhileLoopWithAnnotation.cpp |  | False | 1 | 16 |  | // Generated plantum contains only action without loop struc... | 
+ | --  VAR_DECL | 9 | x | x | c:@x | True | 7 | 7 |  | intx | 
+ | --  VAR_DECL | 9 | b | b | c:@b | True | 7 | 7 |  | intx,b | 
+ | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 9 | 15 |  | intmain(){do{//$ action 1}while(x<b);} | 
+ | ----  COMPOUND_STMT | 202 | None |  |  | False | 10 | 15 |  | {do{//$ action 1}while(x<b);} | 
+ | ------  DO_STMT | 208 | None |  |  | False | 11 | 14 |  | do{//$ action 1}while(x<b) | 
+ | --------  COMPOUND_STMT | 202 | None |  |  | False | 12 | 14 |  | {//$ action 1} | 
+ | --------  BINARY_OPERATOR | 114 | None |  |  | False | 14 | 14 |  | x<b | 
+ | ----------  UNEXPOSED_EXPR | 100 | None | x |  | False | 14 | 14 |  | x | 
+ | ------------  DECL_REF_EXPR | 101 | None | x |  | False | 14 | 14 |  | x | 
+ | ----------  UNEXPOSED_EXPR | 100 | None | b |  | False | 14 | 14 |  | b | 
+ | ------------  DECL_REF_EXPR | 101 | None | b |  | False | 14 | 14 |  | b | 
