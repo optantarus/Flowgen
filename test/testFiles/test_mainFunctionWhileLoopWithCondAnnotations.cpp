@@ -1,4 +1,9 @@
-// TODO: while loop is not shown even with conditional annotation
+/*
+* while loop is not shown even with conditional annotation
+* - it is shown if variable is declared.
+*/
+
+int x;
 
 int main()
 {

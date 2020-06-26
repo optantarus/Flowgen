@@ -1,4 +1,10 @@
-// TODO: main function not in flowdb ? Not generated in plantuml.
+/**
+* call_2() is intentionally not declared. It should not be a link from main shown in generated plantuml.
+* 
+* TODO: main function not in flowdb ? Not generated in plantuml.
+*/
+
+int x;
 
 void call_1(void);
 

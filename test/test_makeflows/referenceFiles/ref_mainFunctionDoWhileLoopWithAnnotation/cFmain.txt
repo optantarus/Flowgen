@@ -2,6 +2,10 @@
 
 start
  skinparam activityBackgroundColor #white 
-:#84add6:action 1;
+
+repeat
+   :#84add6:action 1;
+repeat while (x < b? )
+
 
 @enduml

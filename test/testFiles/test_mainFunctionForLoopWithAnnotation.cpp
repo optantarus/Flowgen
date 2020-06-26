@@ -1,5 +1,7 @@
-// TODO: In plantuml for loop conditions should be separated by ;.
-// TODO: Check why ++ in for loop condition is not shown in plantuml
+/**
+* TODO: In plantuml for loop conditions should be separated by ;.
+* TODO: Check why ++ in for loop condition is not shown in plantuml
+*/
 
 int main()
 {

@@ -1,3 +1,6 @@
+// TODO: generated plantuml contains if structure with no condition
+
+int x;
 
 int main()
 {
