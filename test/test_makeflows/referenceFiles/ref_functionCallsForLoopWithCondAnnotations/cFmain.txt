@@ -1,0 +1,13 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+
+while (condition 1)
+   :#84add6:call do
+----
+VOID call_do() -- [[test_functionCallsForLoopWithCondAnnotations.html#cFcalldo link]];
+endwhile
+
+
+@enduml

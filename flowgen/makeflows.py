@@ -969,11 +969,15 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     elif looptypeArray[IdxLoopbeginlineArray] == 209:
                         #the '0','1','2' children of the node contain the spellings of the three elements of the FOR loop. 
                         #We have to call the command get_tokens, which produces an iterator over all tokens and then join them into the same string.
-                        #However, for the '0' and '2' children, we don't want the last token. We have first to convert the iterator into a list and then use [:-1]
-                        string_condition = 'FOR ('+' '.join(
-                            t.spelling.decode("utf-8") for t in list(list(node.get_children())[0].get_tokens())[:-1])+' '+' '.join(
-                            t.spelling.decode("utf-8") for t in list(node.get_children())[1].get_tokens())+' '+' '.join(
-                            t.spelling.decode("utf-8") for t in list(list(node.get_children())[2].get_tokens())[:-1])+' )'
+                        #However, for the '0' children, if it's a DECL statement, we don't want the last token. We have first to convert the iterator into a list and then use [:-1]
+                        if list(node.get_children())[0].kind.value == 231:
+                            condPart1 = ' '.join(t.spelling.decode("utf-8") for t in list(list(node.get_children())[0].get_tokens())[:-1])+'; '
+                        else:
+                            condPart1 = ' '.join(t.spelling.decode("utf-8") for t in list(list(node.get_children())[0].get_tokens()))+'; '
+                        
+                        string_condition = 'FOR ('+ condPart1 +' '.join(
+                            t.spelling.decode("utf-8") for t in list(node.get_children())[1].get_tokens())+'; '+' '.join(
+                            t.spelling.decode("utf-8") for t in list(list(node.get_children())[2].get_tokens()))+' )'
                         string_tmp[
                             write_zoomlevel] += '\n' + indentation_level * tab + 'while (' + string_condition + ')''\n'
                 # mark } endloop to be written in string
