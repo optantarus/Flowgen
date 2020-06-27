@@ -56,7 +56,7 @@ def lookfor_actionAnnotation_inNode(nodeIN,zoom):
     
     # save all file line in variable
     # TODO: why dump complete file and not from start to end line ?      
-    infile_str=nodeIN.location.file.name.decode("utf-8")
+    infile_str=nodeIN.location.file.name
     infile= open(infile_str,'r')            
     enum_file=list(enumerate(infile,start=1))      
     infile.close()
@@ -80,7 +80,7 @@ def find_functions(node, writefunc, relevant_folder):
   if node.kind.is_declaration():
      #8 is a function and 21 is c++ class method
     if node.kind.value== 8 or node.kind.value==21:
-       if os.path.dirname(node.location.file.name.decode("utf8")) == relevant_folder:
+       if os.path.dirname(node.location.file.name) == relevant_folder:
                 
          if lookfor_actionAnnotation_inNode(node,0):
             zoom_str='0'
@@ -90,9 +90,9 @@ def find_functions(node, writefunc, relevant_folder):
                   zoom_str='2'
             classname = ''
             if node.kind.name=='CXX_METHOD':
-               classname= str(node.semantic_parent.spelling.decode("utf-8"))+'::'
-            print('Found annotated method/function:', classname+node.displayname.decode("utf8"))
-            writefunc.write(node.get_usr().decode("utf8")+'\t'+zoom_str+'\t'+str(node.result_type.kind.name)+' '+classname+node.displayname.decode("utf8")+'\n')
+               classname= str(node.semantic_parent.spelling)+'::'
+            print('Found annotated method/function:', classname+node.displayname)
+            writefunc.write(node.get_usr()+'\t'+zoom_str+'\t'+str(node.result_type.kind.name)+' '+classname+node.displayname+'\n')
        return
 
   # Recurse for children of this node
@@ -114,9 +114,9 @@ if __name__ == '__main__': # pragma: no cover
     
     # parse file given by comand line with specified arguments   
     tu = index.parse(sys.argv[1],args)
-    print ('Translation unit:', tu.spelling.decode("utf-8"))
+    print ('Translation unit:', tu.spelling)
     
-    relevant_folder=os.path.dirname(tu.spelling.decode("utf-8"))
+    relevant_folder=os.path.dirname(tu.spelling)
     for diagnostic in tu.diagnostics:
       print(diagnostic)
     infile_str=os.path.splitext(os.path.basename(sys.argv[1]))[0]

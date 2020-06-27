@@ -74,7 +74,7 @@ class build_db_test(unittest.TestCase):
                 # get clang translation unit and file path
                 clangIndex = clang.cindex.Index.create()
                 clangTu = clangIndex.parse('testFiles/test_' + fileName + '.cpp',self.clangStdArgs)
-                relevant_folder=os.path.dirname(clangTu.spelling.decode("utf-8"))
+                relevant_folder=os.path.dirname(clangTu.spelling)
                 
                 # execute function under test
                 testFile = open('test_build_db/generatedFiles/test_' + fileName +'.flowdb',"w")
