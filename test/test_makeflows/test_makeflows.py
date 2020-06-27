@@ -73,7 +73,7 @@ class makeflows_test(unittest.TestCase):
                 # get clang translation unit and file path
                 clangIndex = clang.cindex.Index.create()
                 clangTu = clangIndex.parse('testFiles/test_' + fileName + '.cpp',self.clangStdArgs)
-                relevantFolder=os.path.dirname(clangTu.spelling.decode("utf-8"))
+                relevantFolder=os.path.dirname(clangTu.spelling)
                 
                 folderName = fileName + '/'
                 flowDbFolder = 'test_makeflows/inputFiles/' + folderName

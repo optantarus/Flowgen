@@ -6,19 +6,19 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionIfElseIfWithCondAnnotations.cpp |  | False | 1 | 16 |  | intx;intmain(){//$ [condition 1]if(x==1){//$ action 1}//$ [c... | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_mainFunctionIfElseIfWithCondAnnotations.cpp | testFiles/test_mainFunctionIfElseIfWithCondAnnotations.cpp |  | False | 1 | 16 |  | intx;intmain(){//$ [condition 1]if(x==1){//$ action 1}//$ [c... | 
  | --  VAR_DECL | 9 | x | x | c:@x | True | 1 | 1 |  | intx | 
  | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 3 | 15 |  | intmain(){//$ [condition 1]if(x==1){//$ action 1}//$ [condit... | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 4 | 15 |  | {//$ [condition 1]if(x==1){//$ action 1}//$ [condition 2]els... | 
- | ------  IF_STMT | 205 | None |  |  | False | 6 | 14 |  | if(x==1){//$ action 1}//$ [condition 2]elseif(x==2){//$ acti... | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 6 | 6 |  | x==1 | 
- | ----------  UNEXPOSED_EXPR | 100 | None | x |  | False | 6 | 6 |  | x | 
- | ------------  DECL_REF_EXPR | 101 | None | x |  | False | 6 | 6 |  | x | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 6 | 6 |  | 1 | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 7 | 9 |  | {//$ action 1} | 
- | --------  IF_STMT | 205 | None |  |  | False | 11 | 14 |  | if(x==2){//$ action 2} | 
- | ----------  BINARY_OPERATOR | 114 | None |  |  | False | 11 | 11 |  | x==2 | 
- | ------------  UNEXPOSED_EXPR | 100 | None | x |  | False | 11 | 11 |  | x | 
- | --------------  DECL_REF_EXPR | 101 | None | x |  | False | 11 | 11 |  | x | 
- | ------------  INTEGER_LITERAL | 106 | None |  |  | False | 11 | 11 |  | 2 | 
- | ----------  COMPOUND_STMT | 202 | None |  |  | False | 12 | 14 |  | {//$ action 2} | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 4 | 15 |  | {//$ [condition 1]if(x==1){//$ action 1}//$ [condition 2]els... | 
+ | ------  IF_STMT | 205 |  |  |  | False | 6 | 14 |  | if(x==1){//$ action 1}//$ [condition 2]elseif(x==2){//$ acti... | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 6 | 6 |  | x==1 | 
+ | ----------  UNEXPOSED_EXPR | 100 | x | x |  | False | 6 | 6 |  | x | 
+ | ------------  DECL_REF_EXPR | 101 | x | x |  | False | 6 | 6 |  | x | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 6 | 6 |  | 1 | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 7 | 9 |  | {//$ action 1} | 
+ | --------  IF_STMT | 205 |  |  |  | False | 11 | 14 |  | if(x==2){//$ action 2} | 
+ | ----------  BINARY_OPERATOR | 114 |  |  |  | False | 11 | 11 |  | x==2 | 
+ | ------------  UNEXPOSED_EXPR | 100 | x | x |  | False | 11 | 11 |  | x | 
+ | --------------  DECL_REF_EXPR | 101 | x | x |  | False | 11 | 11 |  | x | 
+ | ------------  INTEGER_LITERAL | 106 |  |  |  | False | 11 | 11 |  | 2 | 
+ | ----------  COMPOUND_STMT | 202 |  |  |  | False | 12 | 14 |  | {//$ action 2} | 

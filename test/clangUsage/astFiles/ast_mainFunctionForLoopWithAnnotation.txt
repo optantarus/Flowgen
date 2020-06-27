@@ -6,17 +6,17 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionForLoopWithAnnotation.cpp |  | False | 1 | 13 |  | /*** TODO: In plantuml for loop conditions should be separat... | 
- | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 6 | 12 |  | intmain(){for(inti=0;i<6;i++){//$ action 1}} | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 7 | 12 |  | {for(inti=0;i<6;i++){//$ action 1}} | 
- | ------  FOR_STMT | 209 | None |  |  | False | 8 | 11 |  | for(inti=0;i<6;i++){//$ action 1} | 
- | --------  DECL_STMT | 231 | None |  |  | False | 8 | 8 |  | inti=0; | 
- | ----------  VAR_DECL | 9 | i | i | c:test_mainFunctionForLoopWithAnnotation.cpp@163@F@main#@i | True | 8 | 8 |  | inti=0 | 
- | ------------  INTEGER_LITERAL | 106 | None |  |  | False | 8 | 8 |  | 0 | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 8 | 8 |  | i<6 | 
- | ----------  UNEXPOSED_EXPR | 100 | None | i |  | False | 8 | 8 |  | i | 
- | ------------  DECL_REF_EXPR | 101 | None | i |  | False | 8 | 8 |  | i | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 8 | 8 |  | 6 | 
- | --------  UNARY_OPERATOR | 112 | None |  |  | False | 8 | 8 |  | i++ | 
- | ----------  DECL_REF_EXPR | 101 | None | i |  | False | 8 | 8 |  | i | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 9 | 11 |  | {//$ action 1} | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_mainFunctionForLoopWithAnnotation.cpp | testFiles/test_mainFunctionForLoopWithAnnotation.cpp |  | False | 1 | 15 |  | /*** In plantuml for loop conditions should be separated by ... | 
+ | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 8 | 14 |  | intmain(){for(inti=0;i<6;i++){//$ action 1}} | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 9 | 14 |  | {for(inti=0;i<6;i++){//$ action 1}} | 
+ | ------  FOR_STMT | 209 |  |  |  | False | 10 | 13 |  | for(inti=0;i<6;i++){//$ action 1} | 
+ | --------  DECL_STMT | 231 |  |  |  | False | 10 | 10 |  | inti=0; | 
+ | ----------  VAR_DECL | 9 | i | i | c:test_mainFunctionForLoopWithAnnotation.cpp@223@F@main#@i | True | 10 | 10 |  | inti=0 | 
+ | ------------  INTEGER_LITERAL | 106 |  |  |  | False | 10 | 10 |  | 0 | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 10 | 10 |  | i<6 | 
+ | ----------  UNEXPOSED_EXPR | 100 | i | i |  | False | 10 | 10 |  | i | 
+ | ------------  DECL_REF_EXPR | 101 | i | i |  | False | 10 | 10 |  | i | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 10 | 10 |  | 6 | 
+ | --------  UNARY_OPERATOR | 112 |  |  |  | False | 10 | 10 |  | i++ | 
+ | ----------  DECL_REF_EXPR | 101 | i | i |  | False | 10 | 10 |  | i | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 11 | 13 |  | {//$ action 1} | 

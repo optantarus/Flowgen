@@ -6,13 +6,13 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionIfWithCondAnnotations.cpp |  | False | 1 | 11 |  | intx;intmain(){//$ [condition 1]if(x==1){//$ action 1}} | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_mainFunctionIfWithCondAnnotations.cpp | testFiles/test_mainFunctionIfWithCondAnnotations.cpp |  | False | 1 | 11 |  | intx;intmain(){//$ [condition 1]if(x==1){//$ action 1}} | 
  | --  VAR_DECL | 9 | x | x | c:@x | True | 1 | 1 |  | intx | 
  | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 3 | 10 |  | intmain(){//$ [condition 1]if(x==1){//$ action 1}} | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 4 | 10 |  | {//$ [condition 1]if(x==1){//$ action 1}} | 
- | ------  IF_STMT | 205 | None |  |  | False | 6 | 9 |  | if(x==1){//$ action 1} | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 6 | 6 |  | x==1 | 
- | ----------  UNEXPOSED_EXPR | 100 | None | x |  | False | 6 | 6 |  | x | 
- | ------------  DECL_REF_EXPR | 101 | None | x |  | False | 6 | 6 |  | x | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 6 | 6 |  | 1 | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 7 | 9 |  | {//$ action 1} | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 4 | 10 |  | {//$ [condition 1]if(x==1){//$ action 1}} | 
+ | ------  IF_STMT | 205 |  |  |  | False | 6 | 9 |  | if(x==1){//$ action 1} | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 6 | 6 |  | x==1 | 
+ | ----------  UNEXPOSED_EXPR | 100 | x | x |  | False | 6 | 6 |  | x | 
+ | ------------  DECL_REF_EXPR | 101 | x | x |  | False | 6 | 6 |  | x | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 6 | 6 |  | 1 | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 7 | 9 |  | {//$ action 1} | 

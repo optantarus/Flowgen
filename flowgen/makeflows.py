@@ -69,7 +69,7 @@ def lookfor_lowestZoomactionAnnotation_inNode(nodeIN, diagram_zoom):
 
     # read source code from file
     # TODO: save only part of node (start_line, end_line) ?
-    infile_str = nodeIN.location.file.name.decode("utf-8")
+    infile_str = nodeIN.location.file.name
     infile = open(infile_str, 'r')
     start_line = nodeIN.extent.start.line
     end_line = nodeIN.extent.end.line
@@ -492,14 +492,14 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
     end_line = node.extent.end.line
     infile_clang = node.location.file
     
-    infile_str = node.location.file.name.decode("utf-8")
+    infile_str = node.location.file.name
     infile = open(infile_str, 'r')
     #lines enumerated starting from 1
     enum_file = list(enumerate(infile, start=1))
     infile.close()
            
     print('Processing %s of kind %s [start_line=%s, end_line=%s. At "%s"]' % (
-        node.spelling.decode("utf-8"), node.kind.name, node.extent.start.line, node.extent.end.line,
+        node.spelling, node.kind.name, node.extent.start.line, node.extent.end.line,
         node.location.file))
 
     # TO DO: zoom loop generates all possible zoom levels. Instead, only relevant zoom for each diagram should be generated.
@@ -508,9 +508,9 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
 
         class_name = ''
         if node.kind.name == 'CXX_METHOD':
-            class_name = str(node.semantic_parent.spelling.decode("utf8")) + '_'
+            class_name = str(node.semantic_parent.spelling) + '_'
             #also see node.lexical_parent.spelling
-        outfile_str = str(node.get_usr().decode("utf8")) + zoom_str_Array[diagram_zoomlevel]
+        outfile_str = str(node.get_usr()) + zoom_str_Array[diagram_zoomlevel]
         #remove special characters from outfile_str 
         outfile_str = ''.join(e for e in outfile_str if e.isalnum())
 
@@ -654,19 +654,18 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     if actioncallsdefArray:
                         last_comment_str[write_zoomlevelIN] = last_comment_str[write_zoomlevelIN][:-2] + "\n----"
                         for it7 in actioncallsdefArray:
-                            usr_id_str = str(it7.get_usr().decode("utf-8"))
+                            usr_id_str = str(it7.get_usr())
                             usr_id_str = ''.join(e for e in usr_id_str if e.isalnum())
                             classname = ''
                             if it7.kind.name == 'CXX_METHOD':
-                                classname = str(it7.semantic_parent.spelling.decode("utf-8")) + '::'
-                            if read_flowdbs(it7.get_usr().decode("utf8"), input_folder):
+                                classname = str(it7.semantic_parent.spelling) + '::'
+                            if read_flowdbs(it7.get_usr(), input_folder):
                                 call_in_filename_str = read_flowdbs.file + '.html'
                                 last_comment_str[write_zoomlevelIN] += '\n' + str(
-                                    it7.result_type.kind.name) + ' ' + classname + str(it7.displayname.decode(
-                                    "utf-8")) + ' -- [[' + call_in_filename_str + '#' + usr_id_str + ' link]]'
+                                    it7.result_type.kind.name) + ' ' + classname + str(it7.displayname) + ' -- [[' + call_in_filename_str + '#' + usr_id_str + ' link]]'
                             else:
                                 last_comment_str[write_zoomlevelIN] += '\n' + str(
-                                    it7.result_type.kind.name) + ' ' + classname + str(it7.displayname.decode("utf-8"))
+                                    it7.result_type.kind.name) + ' ' + classname + str(it7.displayname)
 
                         last_comment_str[write_zoomlevelIN] += ';\n'
                     #write extra if there are notes
@@ -742,7 +741,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                 #  use source code content of if statement
                 else:
                     string_condition = ' '.join(
-                        t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
+                        t.spelling for t in list(node.get_children())[0].get_tokens())
                     string_tmp[
                         write_zoomlevel] += '\n' + indentation_level * tab + 'if (' + string_condition + ' ?) then(yes)''\n'
                 #mark } endif to be written in string
@@ -775,7 +774,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     'condition') + ') then (yes)' + '\n'
             else:
                 string_condition = ' '.join(
-                    t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
+                    t.spelling for t in list(node.get_children())[0].get_tokens())
                 string_tmp[write_zoomlevel] += (
                                                    indentation_level - 1) * tab + 'elseif (' + string_condition + ' ?) then (yes)' + '\n'
                 #explore elseif and update ifbeginlineNestedArray, ifendlineNestedArray, ifnodeNestedArray
@@ -848,7 +847,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                         'condition') + ') then(yes)''\n'
                 else:
                     string_condition = ' '.join(
-                        t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
+                        t.spelling for t in list(node.get_children())[0].get_tokens())
                     string_tmp[
                         write_zoomlevel] += '\n' + indentation_level * tab + 'if (' + string_condition + ' ?) then(yes)''\n'
                 #mark } Nested endif to be written in string
@@ -879,7 +878,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     'condition') + ') then (yes)' + '\n'
             else:
                 string_condition = ' '.join(
-                    t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
+                    t.spelling for t in list(node.get_children())[0].get_tokens())
                 string_tmp[write_zoomlevel] += (
                                                    indentation_level - 1) * tab + 'else(no)' + '\n' + indentation_level * tab + 'if (' + string_condition + ' ?) then (yes)' + '\n'
             indentation_level += 1
@@ -959,7 +958,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     # 207: A while statement.
                     if looptypeArray[IdxLoopbeginlineArray] == 207:
                         string_condition = ' '.join(
-                            t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
+                            t.spelling for t in list(node.get_children())[0].get_tokens())
                         string_tmp[
                             write_zoomlevel] += '\n' + indentation_level * tab + 'while (' + string_condition + '? )''\n'
                     # 208: A do statement.
@@ -971,13 +970,13 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                         #We have to call the command get_tokens, which produces an iterator over all tokens and then join them into the same string.
                         #However, for the '0' children, if it's a DECL statement, we don't want the last token. We have first to convert the iterator into a list and then use [:-1]
                         if list(node.get_children())[0].kind.value == 231:
-                            condPart1 = ' '.join(t.spelling.decode("utf-8") for t in list(list(node.get_children())[0].get_tokens())[:-1])+'; '
+                            condPart1 = ' '.join(t.spelling for t in list(list(node.get_children())[0].get_tokens())[:-1])+'; '
                         else:
-                            condPart1 = ' '.join(t.spelling.decode("utf-8") for t in list(list(node.get_children())[0].get_tokens()))+'; '
+                            condPart1 = ' '.join(t.spelling for t in list(list(node.get_children())[0].get_tokens()))+'; '
                         
                         string_condition = 'FOR ('+ condPart1 +' '.join(
-                            t.spelling.decode("utf-8") for t in list(node.get_children())[1].get_tokens())+'; '+' '.join(
-                            t.spelling.decode("utf-8") for t in list(list(node.get_children())[2].get_tokens()))+' )'
+                            t.spelling for t in list(node.get_children())[1].get_tokens())+'; '+' '.join(
+                            t.spelling for t in list(list(node.get_children())[2].get_tokens()))+' )'
                         string_tmp[
                             write_zoomlevel] += '\n' + indentation_level * tab + 'while (' + string_condition + ')''\n'
                 # mark } endloop to be written in string
@@ -1016,7 +1015,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     pass
                     node = loopnodeArray[IdxLoopbeginlineArray]
                     string_condition = ' '.join(
-                            t.spelling.decode("utf-8") for t in list(node.get_children())[1].get_tokens())
+                            t.spelling for t in list(node.get_children())[1].get_tokens())
                     string_tmp[write_zoomlevel] += (indentation_level - 1) * tab + 'repeat while ('+ string_condition+ '? )''\n' + '\n'
                 # 209: A for statement.
                 elif looptypeArray[IdxLoopbeginlineArray]==209:
@@ -1159,11 +1158,11 @@ def find_functions(tu, node, relevant_folder, input_folder, output_folder):
     
     if node.kind.is_declaration():
         if node.kind.name == 'CXX_METHOD' or node.kind.name == 'FUNCTION_DECL':
-            if os.path.dirname(node.location.file.name.decode("utf8")) == relevant_folder:
+            if os.path.dirname(node.location.file.name) == relevant_folder:
                 #is it in database?
-                keyIN = node.get_usr().decode("utf8")
+                keyIN = node.get_usr()
                 fileIN = input_folder + \
-                         os.path.splitext(os.path.basename(node.location.file.name.decode("utf8")))[0] + '.flowdb'
+                         os.path.splitext(os.path.basename(node.location.file.name))[0] + '.flowdb'
 
                 if read_single_flowdb(keyIN, fileIN):
                     process_find_functions(tu, node, read_single_flowdb.max_diagram_zoomlevel, input_folder, output_folder)
@@ -1191,8 +1190,8 @@ if __name__ == '__main__': # pragma: no cover
         args += sys.argv[2:]
     # In 'cindex.py': def parse(self, path, args=None, unsaved_files=None, options = 0)
     tu = index.parse(sys.argv[1], args)
-    print('Translation unit:', tu.spelling.decode("utf-8"))
-    relevant_folder = os.path.dirname(tu.spelling.decode("utf-8"))
+    print('Translation unit:', tu.spelling)
+    relevant_folder = os.path.dirname(tu.spelling)
     for diagnostic in tu.diagnostics:
         print(diagnostic)
     #global variable for the name of the input file. It will be defined later on.
