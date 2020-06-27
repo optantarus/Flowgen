@@ -945,8 +945,14 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                 # write 'loop' in string
                 description = regexContextualComment.match(enum_file[i - 1 - 1][1])
                 if description:
-                    string_tmp[write_zoomlevel] += '\n' + indentation_level * tab + 'while (' + description.group(
-                        'condition') + ')''\n'
+                    # 208: A do statement.
+                    if looptypeArray[IdxLoopbeginlineArray] == 208:
+                        # condition has to be written at the end of the loop
+                        string_tmp[write_zoomlevel] += '\n' + indentation_level * tab + 'repeat''\n'
+                    else:
+                        string_tmp[write_zoomlevel] += '\n' + indentation_level * tab + 'while (' + description.group(
+                            'condition') + ')''\n'
+                            
                     loopdescription_flag=True
                 else:
                     # depends on the loop type
@@ -986,7 +992,18 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
             #write 'loop end' in string; it depends on the loop type
             # 207: A while statement.
             if loopdescription_flag:
-                string_tmp[write_zoomlevel] += (indentation_level - 1) * tab + 'endwhile' + '\n' + '\n'
+                # 208: A do statement.
+                if looptypeArray[IdxLoopbeginlineArray] == 208:
+                    # get line of do node
+                    doNodeLine = loopbeginlineArray[IdxLoopbeginlineArray]
+                    # get conditional annotation
+                    description = regexContextualComment.match(enum_file[doNodeLine - 1 - 1][1])
+                    string_tmp[
+                            write_zoomlevel] += (indentation_level - 1) * tab + 'repeat while (' + description.group(
+                            'condition') + ')' + '\n' + '\n'
+                else:
+                    string_tmp[write_zoomlevel] += (indentation_level - 1) * tab + 'endwhile' + '\n' + '\n'
+                    
             else:
                 if looptypeArray[IdxLoopbeginlineArray]==207:
                     string_tmp[write_zoomlevel] += (indentation_level - 1) * tab + 'endwhile' + '\n' + '\n'
@@ -995,7 +1012,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     pass
                     node = loopnodeArray[IdxLoopbeginlineArray]
                     string_condition = ' '.join(
-                            t.spelling.decode("utf-8") for t in list(node.get_children())[1].get_tokens())[:-1]
+                            t.spelling.decode("utf-8") for t in list(node.get_children())[1].get_tokens())
                     string_tmp[write_zoomlevel] += (indentation_level - 1) * tab + 'repeat while ('+ string_condition+ '? )''\n' + '\n'
                 # 209: A for statement.
                 elif looptypeArray[IdxLoopbeginlineArray]==209:
