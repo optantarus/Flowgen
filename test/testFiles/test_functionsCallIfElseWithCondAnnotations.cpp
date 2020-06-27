@@ -1,7 +1,8 @@
 /**
 * call_2() is intentionally not declared. It should not be a link from main shown in generated plantuml.
 * 
-* TODO: main function not in flowdb ? Not generated in plantuml.
+* main function not in flowdb ? Not generated in plantuml.
+* -> needs action annotation statements
 */
 
 int x;
@@ -13,6 +14,7 @@ int main()
     //$ [condition 1]
     if(x == 1)
     {
+        //$ call 1
         call_1() //$
     }
     //$ [condition 2]
