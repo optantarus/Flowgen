@@ -959,7 +959,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                     # 207: A while statement.
                     if looptypeArray[IdxLoopbeginlineArray] == 207:
                         string_condition = ' '.join(
-                            t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())[:-1]
+                            t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
                         string_tmp[
                             write_zoomlevel] += '\n' + indentation_level * tab + 'while (' + string_condition + '? )''\n'
                     # 208: A do statement.

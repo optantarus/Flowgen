@@ -10,7 +10,7 @@
 * -> OK, its shown only in the level corresponding to annotations in the loop
 * TODO: Build db does not add readCAN to flowdb -> because no level 0 annotation ? -> add warning.
 * TODO: No end/stop node if there's not return
-* TODO: No end to loog through findfunction for function declarations (see https://stackoverflow.com/questions/38295521/how-to-distinguish-function-definitions-and-function-declarations-in-clang-ast-v for solution)
+* TODO: No need to loop through findfunction for function declarations (see https://stackoverflow.com/questions/38295521/how-to-distinguish-function-definitions-and-function-declarations-in-clang-ast-v for solution)
 * 
 * INFO: annotation at line end needs a corresponding action (as for maincycle() call in main())
 */
