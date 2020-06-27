@@ -743,7 +743,6 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                 else:
                     string_condition = ' '.join(
                         t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
-                    string_condition = string_condition[:-1]
                     string_tmp[
                         write_zoomlevel] += '\n' + indentation_level * tab + 'if (' + string_condition + ' ?) then(yes)''\n'
                 #mark } endif to be written in string
@@ -777,7 +776,6 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
             else:
                 string_condition = ' '.join(
                     t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
-                string_condition = string_condition[:-1]
                 string_tmp[write_zoomlevel] += (
                                                    indentation_level - 1) * tab + 'elseif (' + string_condition + ' ?) then (yes)' + '\n'
                 #explore elseif and update ifbeginlineNestedArray, ifendlineNestedArray, ifnodeNestedArray
@@ -835,7 +833,7 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
             nonlocal elseifbeginlineNestedArray, elsebeginlineNested, ifstructurenodeNestedArray, ifstructureelseifnodeNestedArray, ifstmtNested_write_zoomlevel, write_zoomlevel
             # get node of current if statement
             IdxIfbeginlineArrayNested = ifbeginlineNestedArray.index(i)
-            node = ifnodeArray[IdxIfbeginlineArrayNested]
+            node = ifnodeNestedArray[IdxIfbeginlineArrayNested]
             #if comment inside if statement:
             if lookfor_lowestZoomactionAnnotation_inNode(node, diagram_zoomlevel):
                 #adjust zoomlevel
@@ -851,7 +849,6 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
                 else:
                     string_condition = ' '.join(
                         t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
-                    string_condition = string_condition[:-1]
                     string_tmp[
                         write_zoomlevel] += '\n' + indentation_level * tab + 'if (' + string_condition + ' ?) then(yes)''\n'
                 #mark } Nested endif to be written in string
@@ -883,7 +880,6 @@ def process_find_functions(tu, node, MAX_diagram_zoomlevel, input_folder, output
             else:
                 string_condition = ' '.join(
                     t.spelling.decode("utf-8") for t in list(node.get_children())[0].get_tokens())
-                string_condition = string_condition[:-1]
                 string_tmp[write_zoomlevel] += (
                                                    indentation_level - 1) * tab + 'else(no)' + '\n' + indentation_level * tab + 'if (' + string_condition + ' ?) then (yes)' + '\n'
             indentation_level += 1

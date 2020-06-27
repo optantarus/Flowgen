@@ -2,11 +2,8 @@
 
 start
  skinparam activityBackgroundColor #white 
+:#84add6:initialize soft- and hardware;
 
-if (x == 1 ?) then(yes)
-   :#84add6:action 1;
-else(no)
-endif
-
+stop
 
 @enduml

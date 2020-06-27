@@ -1,0 +1,15 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+partition #84add6 "Loop through all inputs." {
+
+while (FOR (i = i < 10 i = i + ))
+   :#b2cce5:read current input value\nsave value;
+endwhile
+
+}
+
+stop
+
+@enduml

@@ -1,4 +1,7 @@
-// TODO: Check, why should there be nothing generated ?
+/**
+* Check, why should there be nothing generated ?
+* -> ok does not make sense to generate empty if else construct
+*/
 
 int x;
 
