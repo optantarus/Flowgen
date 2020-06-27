@@ -1,0 +1,35 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+
+while (true ? )
+
+   if (time for new main cycle ieteration ?) then(yes)
+      partition #84add6 "execute main cycle" {
+      :#b2cce5:read inputs
+----
+VOID readInputs() -- [[test_complex1.html#cFreadInputs link]];
+      :#b2cce5:receive can messages;
+      }
+   elseif (error = 0 ?) then (yes)
+      :#84add6:increment timer;
+
+      if (timer < oldTimer ?) then(yes)
+         :#84add6:fatal error;
+      else(no)
+         :#84add6:no problem;
+      endif
+
+   elseif (error = 1 ?) then (yes)
+      :#84add6:do crazy stuff;
+   else(no)
+      :#84add6:everything is lost;
+   endif
+
+endwhile
+
+
+stop
+
+@enduml

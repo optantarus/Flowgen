@@ -6,14 +6,14 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionIfElseWithAnnotation.cpp |  | False | 1 | 16 |  | // TODO: generated plantuml contains if structure with no co... | 
- | --  VAR_DECL | 9 | x | x | c:@x | True | 3 | 3 |  | intx | 
- | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 5 | 15 |  | intmain(){if(x==1){//$ action 1}else{//$ action 2}} | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 6 | 15 |  | {if(x==1){//$ action 1}else{//$ action 2}} | 
- | ------  IF_STMT | 205 | None |  |  | False | 7 | 14 |  | if(x==1){//$ action 1}else{//$ action 2} | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 7 | 7 |  | x==1 | 
- | ----------  UNEXPOSED_EXPR | 100 | None | x |  | False | 7 | 7 |  | x | 
- | ------------  DECL_REF_EXPR | 101 | None | x |  | False | 7 | 7 |  | x | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 7 | 7 |  | 1 | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 8 | 10 |  | {//$ action 1} | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 12 | 14 |  | {//$ action 2} | 
+ |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionIfElseWithAnnotation.cpp |  | False | 1 | 22 |  | /*** generated plantuml contains if structure with no condit... | 
+ | --  VAR_DECL | 9 | x | x | c:@x | True | 9 | 9 |  | intx | 
+ | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 11 | 21 |  | intmain(){if(x==1){//$ action 1}else{//$ action 2}} | 
+ | ----  COMPOUND_STMT | 202 | None |  |  | False | 12 | 21 |  | {if(x==1){//$ action 1}else{//$ action 2}} | 
+ | ------  IF_STMT | 205 | None |  |  | False | 13 | 20 |  | if(x==1){//$ action 1}else{//$ action 2} | 
+ | --------  BINARY_OPERATOR | 114 | None |  |  | False | 13 | 13 |  | x==1 | 
+ | ----------  UNEXPOSED_EXPR | 100 | None | x |  | False | 13 | 13 |  | x | 
+ | ------------  DECL_REF_EXPR | 101 | None | x |  | False | 13 | 13 |  | x | 
+ | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 13 | 13 |  | 1 | 
+ | --------  COMPOUND_STMT | 202 | None |  |  | False | 14 | 16 |  | {//$ action 1} | 
+ | --------  COMPOUND_STMT | 202 | None |  |  | False | 18 | 20 |  | {//$ action 2} | 
