@@ -2,6 +2,6 @@
 
 start
  skinparam activityBackgroundColor #white 
-:#84add6:Loop through all inputs.;
+:#84add6:action 1;
 
 @enduml
