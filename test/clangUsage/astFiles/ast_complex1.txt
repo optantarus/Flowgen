@@ -28,9 +28,9 @@ AST table:
  | --  FUNCTION_DECL | 8 | maincycle | maincycle() | c:@F@maincycle# | True | 45 | 88 |  | voidmaincycle(void){inttimer,oldTimer,error;//$while(true){/... | 
  | ----  COMPOUND_STMT | 202 | None |  |  | False | 46 | 88 |  | {inttimer,oldTimer,error;//$while(true){//$ [time for new ma... | 
  | ------  DECL_STMT | 231 | None |  |  | False | 47 | 47 |  | inttimer,oldTimer,error; | 
- | --------  VAR_DECL | 9 | timer | timer | c:test_complex1.cpp@1327@F@maincycle#@timer | True | 47 | 47 |  | inttimer | 
- | --------  VAR_DECL | 9 | oldTimer | oldTimer | c:test_complex1.cpp@1327@F@maincycle#@oldTimer | True | 47 | 47 |  | oldTimer | 
- | --------  VAR_DECL | 9 | error | error | c:test_complex1.cpp@1327@F@maincycle#@error | True | 47 | 47 |  | error | 
+ | --------  VAR_DECL | 9 | timer | timer | c:test_complex1.cpp@1328@F@maincycle#@timer | True | 47 | 47 |  | inttimer | 
+ | --------  VAR_DECL | 9 | oldTimer | oldTimer | c:test_complex1.cpp@1328@F@maincycle#@oldTimer | True | 47 | 47 |  | oldTimer | 
+ | --------  VAR_DECL | 9 | error | error | c:test_complex1.cpp@1328@F@maincycle#@error | True | 47 | 47 |  | error | 
  | ------  WHILE_STMT | 207 | None |  |  | False | 50 | 85 |  | while(true){//$ [time for new main cycle ieteration ?]if(tim... | 
  | --------  CXX_BOOL_LITERAL_EXPR | 130 | None |  |  | False | 50 | 50 |  | true | 
  | --------  COMPOUND_STMT | 202 | None |  |  | False | 51 | 85 |  | {//$ [time for new main cycle ieteration ?]if(timer>10){//$ ... | 
@@ -79,7 +79,7 @@ AST table:
  | --  FUNCTION_DECL | 8 | readInputs | readInputs() | c:@F@readInputs# | True | 91 | 101 |  | voidreadInputs(){inti=0;//$ Loop through all inputs.for(i=0;... | 
  | ----  COMPOUND_STMT | 202 | None |  |  | False | 92 | 101 |  | {inti=0;//$ Loop through all inputs.for(i=0;i<10;i=i+1){//$1... | 
  | ------  DECL_STMT | 231 | None |  |  | False | 93 | 93 |  | inti=0; | 
- | --------  VAR_DECL | 9 | i | i | c:test_complex1.cpp@2151@F@readInputs#@i | True | 93 | 93 |  | inti=0 | 
+ | --------  VAR_DECL | 9 | i | i | c:test_complex1.cpp@2152@F@readInputs#@i | True | 93 | 93 |  | inti=0 | 
  | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 93 | 93 |  | 0 | 
  | ------  FOR_STMT | 209 | None |  |  | False | 96 | 100 |  | for(i=0;i<10;i=i+1){//$1 read current input value//$1 save v... | 
  | --------  BINARY_OPERATOR | 114 | None |  |  | False | 96 | 96 |  | i=0 | 
@@ -99,12 +99,12 @@ AST table:
  | --  FUNCTION_DECL | 8 | readCAN | readCAN() | c:@F@readCAN# | True | 104 | 139 |  | voidreadCAN(){inti=0;intCrcReceived,CrcExpected,MsgCtrReceiv... | 
  | ----  COMPOUND_STMT | 202 | None |  |  | False | 105 | 139 |  | {inti=0;intCrcReceived,CrcExpected,MsgCtrReceived,MsgCtrExpe... | 
  | ------  DECL_STMT | 231 | None |  |  | False | 106 | 106 |  | inti=0; | 
- | --------  VAR_DECL | 9 | i | i | c:test_complex1.cpp@2323@F@readCAN#@i | True | 106 | 106 |  | inti=0 | 
+ | --------  VAR_DECL | 9 | i | i | c:test_complex1.cpp@2324@F@readCAN#@i | True | 106 | 106 |  | inti=0 | 
  | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 106 | 106 |  | 0 | 
  | ------  DECL_STMT | 231 | None |  |  | False | 107 | 107 |  | intCrcReceived,CrcExpected,MsgCtrReceived,MsgCtrExpected; | 
- | --------  VAR_DECL | 9 | CrcReceived | CrcReceived | c:test_complex1.cpp@2336@F@readCAN#@CrcReceived | True | 107 | 107 |  | intCrcReceived | 
- | --------  VAR_DECL | 9 | CrcExpected | CrcExpected | c:test_complex1.cpp@2336@F@readCAN#@CrcExpected | True | 107 | 107 |  | CrcExpected | 
- | --------  VAR_DECL | 9 | MsgCtrReceived | MsgCtrReceived | c:test_complex1.cpp@2336@F@readCAN#@MsgCtrReceived | True | 107 | 107 |  | MsgCtrReceived | 
- | --------  VAR_DECL | 9 | MsgCtrExpected | MsgCtrExpected | c:test_complex1.cpp@2336@F@readCAN#@MsgCtrExpected | True | 107 | 107 |  | MsgCtrExpected | 
+ | --------  VAR_DECL | 9 | CrcReceived | CrcReceived | c:test_complex1.cpp@2337@F@readCAN#@CrcReceived | True | 107 | 107 |  | intCrcReceived | 
+ | --------  VAR_DECL | 9 | CrcExpected | CrcExpected | c:test_complex1.cpp@2337@F@readCAN#@CrcExpected | True | 107 | 107 |  | CrcExpected | 
+ | --------  VAR_DECL | 9 | MsgCtrReceived | MsgCtrReceived | c:test_complex1.cpp@2337@F@readCAN#@MsgCtrReceived | True | 107 | 107 |  | MsgCtrReceived | 
+ | --------  VAR_DECL | 9 | MsgCtrExpected | MsgCtrExpected | c:test_complex1.cpp@2337@F@readCAN#@MsgCtrExpected | True | 107 | 107 |  | MsgCtrExpected | 
  | ------  DECL_STMT | 231 | None |  |  | False | 108 | 108 |  | boolmessageReceived; | 
- | --------  VAR_DECL | 9 | messageReceived | messageReceived | c:test_complex1.cpp@2402@F@readCAN#@messageReceived | True | 108 | 108 |  | boolmessageReceived | 
+ | --------  VAR_DECL | 9 | messageReceived | messageReceived | c:test_complex1.cpp@2403@F@readCAN#@messageReceived | True | 108 | 108 |  | boolmessageReceived | 
