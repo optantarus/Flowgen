@@ -1,0 +1,14 @@
+@startuml
+
+start
+ skinparam activityBackgroundColor #white 
+
+if (condition 1) then(yes)
+   :#84add6:call 1
+----
+VOID call_1() -- [[test_functionsCallIfElseWithCondAnnotations.html#cFcall1 link]];
+else(no)
+endif
+
+
+@enduml

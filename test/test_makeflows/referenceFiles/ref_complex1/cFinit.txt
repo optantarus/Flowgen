@@ -4,6 +4,4 @@ start
  skinparam activityBackgroundColor #white 
 :#84add6:initialize soft- and hardware;
 
-stop
-
 @enduml

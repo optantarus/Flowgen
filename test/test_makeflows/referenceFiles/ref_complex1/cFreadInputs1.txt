@@ -10,6 +10,4 @@ endwhile
 
 }
 
-stop
-
 @enduml
