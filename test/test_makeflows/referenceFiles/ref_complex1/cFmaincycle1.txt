@@ -3,7 +3,7 @@
 start
  skinparam activityBackgroundColor #white 
 
-while (true ? )
+while (true? )
 
    if (time for new main cycle ieteration ?) then(yes)
       partition #84add6 "execute main cycle" {
