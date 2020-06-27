@@ -6,26 +6,26 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_mainFunctionNestedIfElseIfWithAnnotation.cpp |  | False | 1 | 24 |  | /*** In plantuml the condition of the first if is also used ... | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_mainFunctionNestedIfElseIfWithAnnotation.cpp | testFiles/test_mainFunctionNestedIfElseIfWithAnnotation.cpp |  | False | 1 | 24 |  | /*** In plantuml the condition of the first if is also used ... | 
  | --  VAR_DECL | 9 | x | x | c:@x | True | 6 | 6 |  | intx | 
  | --  VAR_DECL | 9 | y | y | c:@y | True | 6 | 6 |  | intx,y | 
  | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 8 | 23 |  | intmain(){if(x==1){//$ action 1if(y<6){//$ action 2}elseif(y... | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 9 | 23 |  | {if(x==1){//$ action 1if(y<6){//$ action 2}elseif(y<10){//$ ... | 
- | ------  IF_STMT | 205 | None |  |  | False | 10 | 22 |  | if(x==1){//$ action 1if(y<6){//$ action 2}elseif(y<10){//$ a... | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 10 | 10 |  | x==1 | 
- | ----------  UNEXPOSED_EXPR | 100 | None | x |  | False | 10 | 10 |  | x | 
- | ------------  DECL_REF_EXPR | 101 | None | x |  | False | 10 | 10 |  | x | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 10 | 10 |  | 1 | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 11 | 22 |  | {//$ action 1if(y<6){//$ action 2}elseif(y<10){//$ action 3}... | 
- | ----------  IF_STMT | 205 | None |  |  | False | 14 | 21 |  | if(y<6){//$ action 2}elseif(y<10){//$ action 3} | 
- | ------------  BINARY_OPERATOR | 114 | None |  |  | False | 14 | 14 |  | y<6 | 
- | --------------  UNEXPOSED_EXPR | 100 | None | y |  | False | 14 | 14 |  | y | 
- | ----------------  DECL_REF_EXPR | 101 | None | y |  | False | 14 | 14 |  | y | 
- | --------------  INTEGER_LITERAL | 106 | None |  |  | False | 14 | 14 |  | 6 | 
- | ------------  COMPOUND_STMT | 202 | None |  |  | False | 15 | 17 |  | {//$ action 2} | 
- | ------------  IF_STMT | 205 | None |  |  | False | 18 | 21 |  | if(y<10){//$ action 3} | 
- | --------------  BINARY_OPERATOR | 114 | None |  |  | False | 18 | 18 |  | y<10 | 
- | ----------------  UNEXPOSED_EXPR | 100 | None | y |  | False | 18 | 18 |  | y | 
- | ------------------  DECL_REF_EXPR | 101 | None | y |  | False | 18 | 18 |  | y | 
- | ----------------  INTEGER_LITERAL | 106 | None |  |  | False | 18 | 18 |  | 10 | 
- | --------------  COMPOUND_STMT | 202 | None |  |  | False | 19 | 21 |  | {//$ action 3} | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 9 | 23 |  | {if(x==1){//$ action 1if(y<6){//$ action 2}elseif(y<10){//$ ... | 
+ | ------  IF_STMT | 205 |  |  |  | False | 10 | 22 |  | if(x==1){//$ action 1if(y<6){//$ action 2}elseif(y<10){//$ a... | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 10 | 10 |  | x==1 | 
+ | ----------  UNEXPOSED_EXPR | 100 | x | x |  | False | 10 | 10 |  | x | 
+ | ------------  DECL_REF_EXPR | 101 | x | x |  | False | 10 | 10 |  | x | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 10 | 10 |  | 1 | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 11 | 22 |  | {//$ action 1if(y<6){//$ action 2}elseif(y<10){//$ action 3}... | 
+ | ----------  IF_STMT | 205 |  |  |  | False | 14 | 21 |  | if(y<6){//$ action 2}elseif(y<10){//$ action 3} | 
+ | ------------  BINARY_OPERATOR | 114 |  |  |  | False | 14 | 14 |  | y<6 | 
+ | --------------  UNEXPOSED_EXPR | 100 | y | y |  | False | 14 | 14 |  | y | 
+ | ----------------  DECL_REF_EXPR | 101 | y | y |  | False | 14 | 14 |  | y | 
+ | --------------  INTEGER_LITERAL | 106 |  |  |  | False | 14 | 14 |  | 6 | 
+ | ------------  COMPOUND_STMT | 202 |  |  |  | False | 15 | 17 |  | {//$ action 2} | 
+ | ------------  IF_STMT | 205 |  |  |  | False | 18 | 21 |  | if(y<10){//$ action 3} | 
+ | --------------  BINARY_OPERATOR | 114 |  |  |  | False | 18 | 18 |  | y<10 | 
+ | ----------------  UNEXPOSED_EXPR | 100 | y | y |  | False | 18 | 18 |  | y | 
+ | ------------------  DECL_REF_EXPR | 101 | y | y |  | False | 18 | 18 |  | y | 
+ | ----------------  INTEGER_LITERAL | 106 |  |  |  | False | 18 | 18 |  | 10 | 
+ | --------------  COMPOUND_STMT | 202 |  |  |  | False | 19 | 21 |  | {//$ action 3} | 

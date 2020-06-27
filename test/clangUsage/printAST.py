@@ -84,26 +84,22 @@ class printAST:
         nodeDescription =     ' | ' +  indention + '  ' + node.kind.name
         nodeDescription +=    ' | ' + str(node.kind.value)
         
-        if(node.spelling != None):
-           nodeDescription += ' | ' + str(node.spelling.decode("utf8"))
-        else:
-           nodeDescription += ' | ' + str(node.spelling)
+        nodeDescription +=    ' | ' + node.spelling
         
-        
-        nodeDescription +=    ' | ' + str(node.displayname.decode("utf8"))
-        nodeDescription +=    ' | ' + str(node.get_usr().decode("utf8"))
+        nodeDescription +=    ' | ' + node.displayname
+        nodeDescription +=    ' | ' + node.get_usr()
         nodeDescription +=    ' | ' + str(node.kind.is_declaration())
         nodeDescription +=    ' | ' + str(node.extent.start.line) + ' | ' + str(node.extent.end.line)
         
         arguments = ''
         for argument in node.get_arguments():
-            arguments += argument.spelling.decode("utf8")
+            arguments += argument.spelling
         
         nodeDescription +=    ' | ' + arguments
         
         tokens = ''
         for token in node.get_tokens():
-            tokens += str(token.spelling.decode("utf8"))
+            tokens += token.spelling
         
         nodeDescription +=     ' | ' + self.shortString(tokens.replace('\n', ''), 60) + ' | '
         
@@ -144,7 +140,7 @@ class printAST:
             print("'Write AST File: " + fileName)
             
             # write header for AST file
-            astFile.write('Source folder: ' + str(relevant_folder.decode("utf8")) + '  \n')
+            astFile.write('Source folder: ' + relevant_folder + '  \n')
             astFile.write('Description source file: ' + description + '  \n')
             astFile.write('AST symbols:  "#": node does not have this information   \n  \n')
             astFile.write('AST table:  \n  \n')

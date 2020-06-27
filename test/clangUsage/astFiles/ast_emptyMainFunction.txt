@@ -6,6 +6,6 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_emptyMainFunction.cpp |  | False | 1 | 5 |  | intmain(){} | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_emptyMainFunction.cpp | testFiles/test_emptyMainFunction.cpp |  | False | 1 | 5 |  | intmain(){} | 
  | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 2 | 4 |  | intmain(){} | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 3 | 4 |  | {} | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 3 | 4 |  | {} | 

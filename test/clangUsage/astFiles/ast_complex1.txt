@@ -6,105 +6,105 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_complex1.cpp |  | False | 1 | 140 |  | /** test file with complex combination of constructs* If in ... | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_complex1.cpp | testFiles/test_complex1.cpp |  | False | 1 | 140 |  | /** test file with complex combination of constructs* If in ... | 
  | --  FUNCTION_DECL | 8 | init | init() | c:@F@init# | True | 18 | 18 |  | boolinit(void) | 
  | --  FUNCTION_DECL | 8 | maincycle | maincycle() | c:@F@maincycle# | True | 19 | 19 |  | voidmaincycle(void) | 
  | --  FUNCTION_DECL | 8 | readInputs | readInputs() | c:@F@readInputs# | True | 20 | 20 |  | voidreadInputs(void) | 
  | --  FUNCTION_DECL | 8 | readCAN | readCAN() | c:@F@readCAN# | True | 21 | 21 |  | voidreadCAN(void) | 
  | --  FUNCTION_DECL | 8 | main | main() | c:@F@main# | True | 23 | 37 |  | intmain(){//$ [init successfull ?]if(init()){//$ call maincy... | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 24 | 37 |  | {//$ [init successfull ?]if(init()){//$ call maincyclemaincy... | 
- | ------  IF_STMT | 205 | None |  |  | False | 26 | 34 |  | if(init()){//$ call maincyclemaincycle();//$}else{//$ do not... | 
- | --------  CALL_EXPR | 103 | None | init |  | False | 26 | 26 |  | init() | 
- | ----------  UNEXPOSED_EXPR | 100 | None | init |  | False | 26 | 26 |  | init | 
- | ------------  DECL_REF_EXPR | 101 | None | init |  | False | 26 | 26 |  | init | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 27 | 30 |  | {//$ call maincyclemaincycle();//$} | 
- | ----------  CALL_EXPR | 103 | None | maincycle |  | False | 29 | 29 |  | maincycle() | 
- | ------------  UNEXPOSED_EXPR | 100 | None | maincycle |  | False | 29 | 29 |  | maincycle | 
- | --------------  DECL_REF_EXPR | 101 | None | maincycle |  | False | 29 | 29 |  | maincycle | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 32 | 34 |  | {//$ do nothing} | 
- | ------  RETURN_STMT | 214 | None |  |  | False | 36 | 36 |  | return | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 24 | 37 |  | {//$ [init successfull ?]if(init()){//$ call maincyclemaincy... | 
+ | ------  IF_STMT | 205 |  |  |  | False | 26 | 34 |  | if(init()){//$ call maincyclemaincycle();//$}else{//$ do not... | 
+ | --------  CALL_EXPR | 103 | init | init |  | False | 26 | 26 |  | init() | 
+ | ----------  UNEXPOSED_EXPR | 100 | init | init |  | False | 26 | 26 |  | init | 
+ | ------------  DECL_REF_EXPR | 101 | init | init |  | False | 26 | 26 |  | init | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 27 | 30 |  | {//$ call maincyclemaincycle();//$} | 
+ | ----------  CALL_EXPR | 103 | maincycle | maincycle |  | False | 29 | 29 |  | maincycle() | 
+ | ------------  UNEXPOSED_EXPR | 100 | maincycle | maincycle |  | False | 29 | 29 |  | maincycle | 
+ | --------------  DECL_REF_EXPR | 101 | maincycle | maincycle |  | False | 29 | 29 |  | maincycle | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 32 | 34 |  | {//$ do nothing} | 
+ | ------  RETURN_STMT | 214 |  |  |  | False | 36 | 36 |  | return | 
  | --  FUNCTION_DECL | 8 | init | init() | c:@F@init# | True | 39 | 42 |  | boolinit(void){//$ initialize soft- and hardware} | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 40 | 42 |  | {//$ initialize soft- and hardware} | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 40 | 42 |  | {//$ initialize soft- and hardware} | 
  | --  FUNCTION_DECL | 8 | maincycle | maincycle() | c:@F@maincycle# | True | 45 | 88 |  | voidmaincycle(void){inttimer,oldTimer,error;//$while(true){/... | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 46 | 88 |  | {inttimer,oldTimer,error;//$while(true){//$ [time for new ma... | 
- | ------  DECL_STMT | 231 | None |  |  | False | 47 | 47 |  | inttimer,oldTimer,error; | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 46 | 88 |  | {inttimer,oldTimer,error;//$while(true){//$ [time for new ma... | 
+ | ------  DECL_STMT | 231 |  |  |  | False | 47 | 47 |  | inttimer,oldTimer,error; | 
  | --------  VAR_DECL | 9 | timer | timer | c:test_complex1.cpp@1328@F@maincycle#@timer | True | 47 | 47 |  | inttimer | 
  | --------  VAR_DECL | 9 | oldTimer | oldTimer | c:test_complex1.cpp@1328@F@maincycle#@oldTimer | True | 47 | 47 |  | oldTimer | 
  | --------  VAR_DECL | 9 | error | error | c:test_complex1.cpp@1328@F@maincycle#@error | True | 47 | 47 |  | error | 
- | ------  WHILE_STMT | 207 | None |  |  | False | 50 | 85 |  | while(true){//$ [time for new main cycle ieteration ?]if(tim... | 
- | --------  CXX_BOOL_LITERAL_EXPR | 130 | None |  |  | False | 50 | 50 |  | true | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 51 | 85 |  | {//$ [time for new main cycle ieteration ?]if(timer>10){//$ ... | 
- | ----------  IF_STMT | 205 | None |  |  | False | 53 | 84 |  | if(timer>10){//$ execute main cycle//$1 read inputsreadInput... | 
- | ------------  BINARY_OPERATOR | 114 | None |  |  | False | 53 | 53 |  | timer>10 | 
- | --------------  UNEXPOSED_EXPR | 100 | None | timer |  | False | 53 | 53 |  | timer | 
- | ----------------  DECL_REF_EXPR | 101 | None | timer |  | False | 53 | 53 |  | timer | 
- | --------------  INTEGER_LITERAL | 106 | None |  |  | False | 53 | 53 |  | 10 | 
- | ------------  COMPOUND_STMT | 202 | None |  |  | False | 54 | 62 |  | {//$ execute main cycle//$1 read inputsreadInputs();//$//$1 ... | 
- | --------------  CALL_EXPR | 103 | None | readInputs |  | False | 58 | 58 |  | readInputs() | 
- | ----------------  UNEXPOSED_EXPR | 100 | None | readInputs |  | False | 58 | 58 |  | readInputs | 
- | ------------------  DECL_REF_EXPR | 101 | None | readInputs |  | False | 58 | 58 |  | readInputs | 
- | --------------  CALL_EXPR | 103 | None | readCAN |  | False | 61 | 61 |  | readCAN() | 
- | ----------------  UNEXPOSED_EXPR | 100 | None | readCAN |  | False | 61 | 61 |  | readCAN | 
- | ------------------  DECL_REF_EXPR | 101 | None | readCAN |  | False | 61 | 61 |  | readCAN | 
- | ------------  IF_STMT | 205 | None |  |  | False | 63 | 84 |  | if(error=0){//$ increment timertimer=timer+1;if(timer<oldTim... | 
- | --------------  UNEXPOSED_EXPR | 100 | None |  |  | False | 63 | 63 |  | error=0 | 
- | ----------------  UNEXPOSED_EXPR | 100 | None |  |  | False | 63 | 63 |  | error=0 | 
- | ------------------  BINARY_OPERATOR | 114 | None |  |  | False | 63 | 63 |  | error=0 | 
- | --------------------  DECL_REF_EXPR | 101 | None | error |  | False | 63 | 63 |  | error | 
- | --------------------  INTEGER_LITERAL | 106 | None |  |  | False | 63 | 63 |  | 0 | 
- | --------------  COMPOUND_STMT | 202 | None |  |  | False | 64 | 76 |  | {//$ increment timertimer=timer+1;if(timer<oldTimer){//$ fat... | 
- | ----------------  BINARY_OPERATOR | 114 | None |  |  | False | 66 | 66 |  | timer=timer+1 | 
- | ------------------  DECL_REF_EXPR | 101 | None | timer |  | False | 66 | 66 |  | timer | 
- | ------------------  BINARY_OPERATOR | 114 | None |  |  | False | 66 | 66 |  | timer+1 | 
- | --------------------  UNEXPOSED_EXPR | 100 | None | timer |  | False | 66 | 66 |  | timer | 
- | ----------------------  DECL_REF_EXPR | 101 | None | timer |  | False | 66 | 66 |  | timer | 
- | --------------------  INTEGER_LITERAL | 106 | None |  |  | False | 66 | 66 |  | 1 | 
- | ----------------  IF_STMT | 205 | None |  |  | False | 68 | 75 |  | if(timer<oldTimer){//$ fatal error}else{//$ no problem} | 
- | ------------------  BINARY_OPERATOR | 114 | None |  |  | False | 68 | 68 |  | timer<oldTimer | 
- | --------------------  UNEXPOSED_EXPR | 100 | None | timer |  | False | 68 | 68 |  | timer | 
- | ----------------------  DECL_REF_EXPR | 101 | None | timer |  | False | 68 | 68 |  | timer | 
- | --------------------  UNEXPOSED_EXPR | 100 | None | oldTimer |  | False | 68 | 68 |  | oldTimer | 
- | ----------------------  DECL_REF_EXPR | 101 | None | oldTimer |  | False | 68 | 68 |  | oldTimer | 
- | ------------------  COMPOUND_STMT | 202 | None |  |  | False | 69 | 71 |  | {//$ fatal error} | 
- | ------------------  COMPOUND_STMT | 202 | None |  |  | False | 73 | 75 |  | {//$ no problem} | 
- | --------------  IF_STMT | 205 | None |  |  | False | 77 | 84 |  | if(error=1){//$ do crazy stuff}else{//$ everything is lost} | 
- | ----------------  UNEXPOSED_EXPR | 100 | None |  |  | False | 77 | 77 |  | error=1 | 
- | ------------------  UNEXPOSED_EXPR | 100 | None |  |  | False | 77 | 77 |  | error=1 | 
- | --------------------  BINARY_OPERATOR | 114 | None |  |  | False | 77 | 77 |  | error=1 | 
- | ----------------------  DECL_REF_EXPR | 101 | None | error |  | False | 77 | 77 |  | error | 
- | ----------------------  INTEGER_LITERAL | 106 | None |  |  | False | 77 | 77 |  | 1 | 
- | ----------------  COMPOUND_STMT | 202 | None |  |  | False | 78 | 80 |  | {//$ do crazy stuff} | 
- | ----------------  COMPOUND_STMT | 202 | None |  |  | False | 82 | 84 |  | {//$ everything is lost} | 
- | ------  RETURN_STMT | 214 | None |  |  | False | 87 | 87 |  | return | 
+ | ------  WHILE_STMT | 207 |  |  |  | False | 50 | 85 |  | while(true){//$ [time for new main cycle ieteration ?]if(tim... | 
+ | --------  CXX_BOOL_LITERAL_EXPR | 130 |  |  |  | False | 50 | 50 |  | true | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 51 | 85 |  | {//$ [time for new main cycle ieteration ?]if(timer>10){//$ ... | 
+ | ----------  IF_STMT | 205 |  |  |  | False | 53 | 84 |  | if(timer>10){//$ execute main cycle//$1 read inputsreadInput... | 
+ | ------------  BINARY_OPERATOR | 114 |  |  |  | False | 53 | 53 |  | timer>10 | 
+ | --------------  UNEXPOSED_EXPR | 100 | timer | timer |  | False | 53 | 53 |  | timer | 
+ | ----------------  DECL_REF_EXPR | 101 | timer | timer |  | False | 53 | 53 |  | timer | 
+ | --------------  INTEGER_LITERAL | 106 |  |  |  | False | 53 | 53 |  | 10 | 
+ | ------------  COMPOUND_STMT | 202 |  |  |  | False | 54 | 62 |  | {//$ execute main cycle//$1 read inputsreadInputs();//$//$1 ... | 
+ | --------------  CALL_EXPR | 103 | readInputs | readInputs |  | False | 58 | 58 |  | readInputs() | 
+ | ----------------  UNEXPOSED_EXPR | 100 | readInputs | readInputs |  | False | 58 | 58 |  | readInputs | 
+ | ------------------  DECL_REF_EXPR | 101 | readInputs | readInputs |  | False | 58 | 58 |  | readInputs | 
+ | --------------  CALL_EXPR | 103 | readCAN | readCAN |  | False | 61 | 61 |  | readCAN() | 
+ | ----------------  UNEXPOSED_EXPR | 100 | readCAN | readCAN |  | False | 61 | 61 |  | readCAN | 
+ | ------------------  DECL_REF_EXPR | 101 | readCAN | readCAN |  | False | 61 | 61 |  | readCAN | 
+ | ------------  IF_STMT | 205 |  |  |  | False | 63 | 84 |  | if(error=0){//$ increment timertimer=timer+1;if(timer<oldTim... | 
+ | --------------  UNEXPOSED_EXPR | 100 |  |  |  | False | 63 | 63 |  | error=0 | 
+ | ----------------  UNEXPOSED_EXPR | 100 |  |  |  | False | 63 | 63 |  | error=0 | 
+ | ------------------  BINARY_OPERATOR | 114 |  |  |  | False | 63 | 63 |  | error=0 | 
+ | --------------------  DECL_REF_EXPR | 101 | error | error |  | False | 63 | 63 |  | error | 
+ | --------------------  INTEGER_LITERAL | 106 |  |  |  | False | 63 | 63 |  | 0 | 
+ | --------------  COMPOUND_STMT | 202 |  |  |  | False | 64 | 76 |  | {//$ increment timertimer=timer+1;if(timer<oldTimer){//$ fat... | 
+ | ----------------  BINARY_OPERATOR | 114 |  |  |  | False | 66 | 66 |  | timer=timer+1 | 
+ | ------------------  DECL_REF_EXPR | 101 | timer | timer |  | False | 66 | 66 |  | timer | 
+ | ------------------  BINARY_OPERATOR | 114 |  |  |  | False | 66 | 66 |  | timer+1 | 
+ | --------------------  UNEXPOSED_EXPR | 100 | timer | timer |  | False | 66 | 66 |  | timer | 
+ | ----------------------  DECL_REF_EXPR | 101 | timer | timer |  | False | 66 | 66 |  | timer | 
+ | --------------------  INTEGER_LITERAL | 106 |  |  |  | False | 66 | 66 |  | 1 | 
+ | ----------------  IF_STMT | 205 |  |  |  | False | 68 | 75 |  | if(timer<oldTimer){//$ fatal error}else{//$ no problem} | 
+ | ------------------  BINARY_OPERATOR | 114 |  |  |  | False | 68 | 68 |  | timer<oldTimer | 
+ | --------------------  UNEXPOSED_EXPR | 100 | timer | timer |  | False | 68 | 68 |  | timer | 
+ | ----------------------  DECL_REF_EXPR | 101 | timer | timer |  | False | 68 | 68 |  | timer | 
+ | --------------------  UNEXPOSED_EXPR | 100 | oldTimer | oldTimer |  | False | 68 | 68 |  | oldTimer | 
+ | ----------------------  DECL_REF_EXPR | 101 | oldTimer | oldTimer |  | False | 68 | 68 |  | oldTimer | 
+ | ------------------  COMPOUND_STMT | 202 |  |  |  | False | 69 | 71 |  | {//$ fatal error} | 
+ | ------------------  COMPOUND_STMT | 202 |  |  |  | False | 73 | 75 |  | {//$ no problem} | 
+ | --------------  IF_STMT | 205 |  |  |  | False | 77 | 84 |  | if(error=1){//$ do crazy stuff}else{//$ everything is lost} | 
+ | ----------------  UNEXPOSED_EXPR | 100 |  |  |  | False | 77 | 77 |  | error=1 | 
+ | ------------------  UNEXPOSED_EXPR | 100 |  |  |  | False | 77 | 77 |  | error=1 | 
+ | --------------------  BINARY_OPERATOR | 114 |  |  |  | False | 77 | 77 |  | error=1 | 
+ | ----------------------  DECL_REF_EXPR | 101 | error | error |  | False | 77 | 77 |  | error | 
+ | ----------------------  INTEGER_LITERAL | 106 |  |  |  | False | 77 | 77 |  | 1 | 
+ | ----------------  COMPOUND_STMT | 202 |  |  |  | False | 78 | 80 |  | {//$ do crazy stuff} | 
+ | ----------------  COMPOUND_STMT | 202 |  |  |  | False | 82 | 84 |  | {//$ everything is lost} | 
+ | ------  RETURN_STMT | 214 |  |  |  | False | 87 | 87 |  | return | 
  | --  FUNCTION_DECL | 8 | readInputs | readInputs() | c:@F@readInputs# | True | 91 | 101 |  | voidreadInputs(){inti=0;//$ Loop through all inputs.for(i=0;... | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 92 | 101 |  | {inti=0;//$ Loop through all inputs.for(i=0;i<10;i=i+1){//$1... | 
- | ------  DECL_STMT | 231 | None |  |  | False | 93 | 93 |  | inti=0; | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 92 | 101 |  | {inti=0;//$ Loop through all inputs.for(i=0;i<10;i=i+1){//$1... | 
+ | ------  DECL_STMT | 231 |  |  |  | False | 93 | 93 |  | inti=0; | 
  | --------  VAR_DECL | 9 | i | i | c:test_complex1.cpp@2152@F@readInputs#@i | True | 93 | 93 |  | inti=0 | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 93 | 93 |  | 0 | 
- | ------  FOR_STMT | 209 | None |  |  | False | 96 | 100 |  | for(i=0;i<10;i=i+1){//$1 read current input value//$1 save v... | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 96 | 96 |  | i=0 | 
- | ----------  DECL_REF_EXPR | 101 | None | i |  | False | 96 | 96 |  | i | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 96 | 96 |  | 0 | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 96 | 96 |  | i<10 | 
- | ----------  UNEXPOSED_EXPR | 100 | None | i |  | False | 96 | 96 |  | i | 
- | ------------  DECL_REF_EXPR | 101 | None | i |  | False | 96 | 96 |  | i | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 96 | 96 |  | 10 | 
- | --------  BINARY_OPERATOR | 114 | None |  |  | False | 96 | 96 |  | i=i+1 | 
- | ----------  DECL_REF_EXPR | 101 | None | i |  | False | 96 | 96 |  | i | 
- | ----------  BINARY_OPERATOR | 114 | None |  |  | False | 96 | 96 |  | i+1 | 
- | ------------  UNEXPOSED_EXPR | 100 | None | i |  | False | 96 | 96 |  | i | 
- | --------------  DECL_REF_EXPR | 101 | None | i |  | False | 96 | 96 |  | i | 
- | ------------  INTEGER_LITERAL | 106 | None |  |  | False | 96 | 96 |  | 1 | 
- | --------  COMPOUND_STMT | 202 | None |  |  | False | 97 | 100 |  | {//$1 read current input value//$1 save value} | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 93 | 93 |  | 0 | 
+ | ------  FOR_STMT | 209 |  |  |  | False | 96 | 100 |  | for(i=0;i<10;i=i+1){//$1 read current input value//$1 save v... | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 96 | 96 |  | i=0 | 
+ | ----------  DECL_REF_EXPR | 101 | i | i |  | False | 96 | 96 |  | i | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 96 | 96 |  | 0 | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 96 | 96 |  | i<10 | 
+ | ----------  UNEXPOSED_EXPR | 100 | i | i |  | False | 96 | 96 |  | i | 
+ | ------------  DECL_REF_EXPR | 101 | i | i |  | False | 96 | 96 |  | i | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 96 | 96 |  | 10 | 
+ | --------  BINARY_OPERATOR | 114 |  |  |  | False | 96 | 96 |  | i=i+1 | 
+ | ----------  DECL_REF_EXPR | 101 | i | i |  | False | 96 | 96 |  | i | 
+ | ----------  BINARY_OPERATOR | 114 |  |  |  | False | 96 | 96 |  | i+1 | 
+ | ------------  UNEXPOSED_EXPR | 100 | i | i |  | False | 96 | 96 |  | i | 
+ | --------------  DECL_REF_EXPR | 101 | i | i |  | False | 96 | 96 |  | i | 
+ | ------------  INTEGER_LITERAL | 106 |  |  |  | False | 96 | 96 |  | 1 | 
+ | --------  COMPOUND_STMT | 202 |  |  |  | False | 97 | 100 |  | {//$1 read current input value//$1 save value} | 
  | --  FUNCTION_DECL | 8 | readCAN | readCAN() | c:@F@readCAN# | True | 104 | 139 |  | voidreadCAN(){inti=0;intCrcReceived,CrcExpected,MsgCtrReceiv... | 
- | ----  COMPOUND_STMT | 202 | None |  |  | False | 105 | 139 |  | {inti=0;intCrcReceived,CrcExpected,MsgCtrReceived,MsgCtrExpe... | 
- | ------  DECL_STMT | 231 | None |  |  | False | 106 | 106 |  | inti=0; | 
+ | ----  COMPOUND_STMT | 202 |  |  |  | False | 105 | 139 |  | {inti=0;intCrcReceived,CrcExpected,MsgCtrReceived,MsgCtrExpe... | 
+ | ------  DECL_STMT | 231 |  |  |  | False | 106 | 106 |  | inti=0; | 
  | --------  VAR_DECL | 9 | i | i | c:test_complex1.cpp@2324@F@readCAN#@i | True | 106 | 106 |  | inti=0 | 
- | ----------  INTEGER_LITERAL | 106 | None |  |  | False | 106 | 106 |  | 0 | 
- | ------  DECL_STMT | 231 | None |  |  | False | 107 | 107 |  | intCrcReceived,CrcExpected,MsgCtrReceived,MsgCtrExpected; | 
+ | ----------  INTEGER_LITERAL | 106 |  |  |  | False | 106 | 106 |  | 0 | 
+ | ------  DECL_STMT | 231 |  |  |  | False | 107 | 107 |  | intCrcReceived,CrcExpected,MsgCtrReceived,MsgCtrExpected; | 
  | --------  VAR_DECL | 9 | CrcReceived | CrcReceived | c:test_complex1.cpp@2337@F@readCAN#@CrcReceived | True | 107 | 107 |  | intCrcReceived | 
  | --------  VAR_DECL | 9 | CrcExpected | CrcExpected | c:test_complex1.cpp@2337@F@readCAN#@CrcExpected | True | 107 | 107 |  | CrcExpected | 
  | --------  VAR_DECL | 9 | MsgCtrReceived | MsgCtrReceived | c:test_complex1.cpp@2337@F@readCAN#@MsgCtrReceived | True | 107 | 107 |  | MsgCtrReceived | 
  | --------  VAR_DECL | 9 | MsgCtrExpected | MsgCtrExpected | c:test_complex1.cpp@2337@F@readCAN#@MsgCtrExpected | True | 107 | 107 |  | MsgCtrExpected | 
- | ------  DECL_STMT | 231 | None |  |  | False | 108 | 108 |  | boolmessageReceived; | 
+ | ------  DECL_STMT | 231 |  |  |  | False | 108 | 108 |  | boolmessageReceived; | 
  | --------  VAR_DECL | 9 | messageReceived | messageReceived | c:test_complex1.cpp@2403@F@readCAN#@messageReceived | True | 108 | 108 |  | boolmessageReceived | 

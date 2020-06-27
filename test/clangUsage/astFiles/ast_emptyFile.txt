@@ -6,4 +6,4 @@ AST table:
   
 | node.kind.name | node.kind.value | node.spelling | node.displayname | node.get_usr() | node.kind.is_declaration() | node.extent.start.line | node.extent.end.line | node.get_arguments() | node.get_tokens() | 
 | :------------------- | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---:  | :---: | :--- | 
- |   TRANSLATION_UNIT | 300 | None | testFiles/test_emptyFile.cpp |  | False | 1 | 2 |  |  | 
+ |   TRANSLATION_UNIT | 300 | testFiles/test_emptyFile.cpp | testFiles/test_emptyFile.cpp |  | False | 1 | 2 |  |  | 
